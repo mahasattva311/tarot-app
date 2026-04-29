@@ -1,0 +1,17 @@
+{
+  "id": "ci_001",
+  "agent": "card-interpreter",
+  "label": "major_arcana_reversed_present",
+  "description": "Tests reversed-orientation acknowledgment, intention connection, and no-prediction constraint. The Hanged Man reversed in Present position for a career-stagnation intention is a high-signal case: the shadow/avoidance dimension must be engaged, and the temptation to predict ('things will change') must be resisted.",
+  "input": {
+    "card_id": "major_12",
+    "card_name": "The Hanged Man",
+    "position_label": "Present",
+    "position_meaning": "What is active right now; the current dynamic or core tension",
+    "orientation": "reversed",
+    "intention": "I want to understand why I feel so stuck in my career and whether I'm waiting for the right moment or avoiding something",
+    "theme_tags": ["career", "stagnation", "avoidance"],
+    "card_definition": "The Hanged Man depicts a figure suspended upside-down by one foot from a living tree. His expression is serene, not anguished. The halo around his head suggests illumination through surrender. Keywords: suspension, voluntary sacrifice, new perspective, liminal space, letting go of control. Shadow aspect: stagnation disguised as patience, fear of commitment, using 'waiting' as avoidance."
+  },
+  "reference_output": "{\n  \"card_id\": \"major_12\",\n  \"position_label\": \"Present\",\n  \"interpretation\": \"The Hanged Man reversed in the present position holds up a mirror to the particular quality of your waiting. In its upright form, this figure suspends himself willingly, finding clarity through stillness. Reversed, that same suspension has curdled — what began perhaps as genuine reflection has calcified into something harder to name. The shadow aspect of this card is the way avoidance can masquerade as patience, the way 'not yet' can become a permanent address.\\n\\nIn the context of your question about your career, this card asks whether the stuckness you're feeling has become familiar, even comfortable. The figure's serenity is no longer available to you in this position — what remains is the hanging itself, the liminal space that was supposed to be temporary. There is something here about the cost of staying suspended, and the unexamined fear that moving might be worse than staying.\\n\\nWhat would it mean to take yourself down from the tree before you feel entirely ready?\",\n  \"keywords\": [\"suspended avoidance\", \"calcified waiting\", \"fear of commitment\", \"shadow patience\"]\n}"
+}

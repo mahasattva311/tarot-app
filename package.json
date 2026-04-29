@@ -1,0 +1,30 @@
+{
+  "name": "tarot-app",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "eval": "tsx evals/runner.ts",
+    "eval:fast": "tsx evals/runner.ts --skip-judge",
+    "eval:agent": "tsx evals/runner.ts --agent",
+    "eval:update-baseline": "tsx evals/runner.ts --update-baseline",
+    "eval:ci": "tsx evals/runner.ts --output=markdown"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.30.0",
+    "next": "^14.2.35",
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "tsx": "^4.16.0",
+    "typescript": "^5"
+  }
+}

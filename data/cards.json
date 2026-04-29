@@ -1,0 +1,682 @@
+[
+  {
+    "card_id": "major_00",
+    "card_name": "The Fool",
+    "arcana": "major",
+    "keywords": ["beginnings", "innocence", "spontaneity", "leap of faith", "openness", "unformed potential"],
+    "symbolism": "A young figure stands at the edge of a cliff, pack slung over one shoulder and a white rose in hand, gazing upward as a small dog barks at his heels. The precipice below is unseen by him — his eyes are on the horizon. The sun blazes at his back, illuminating what he has not yet turned to face.",
+    "shadow_aspect": "Recklessness disguised as freedom; the refusal to mature; naïve trust that invites harm; perpetual beginning as a way of avoiding commitment."
+  },
+  {
+    "card_id": "major_01",
+    "card_name": "The Magician",
+    "arcana": "major",
+    "keywords": ["will", "focused intention", "resourcefulness", "self-mastery", "active creation", "transformation"],
+    "symbolism": "A figure stands behind a table bearing the four elemental tools — wand, cup, sword, coin — his right arm raised skyward, his left pointing down: as above, so below. The lemniscate turns endlessly above his head. He stands in a garden of lilies and roses, the conscious and unconscious in simultaneous bloom.",
+    "shadow_aspect": "Manipulation of others; power used for deception; skill without integrity; the brilliant mind scattered across too many directions to accomplish anything."
+  },
+  {
+    "card_id": "major_02",
+    "card_name": "The High Priestess",
+    "arcana": "major",
+    "keywords": ["intuition", "inner knowing", "mystery", "receptivity", "the unconscious", "hidden knowledge"],
+    "symbolism": "A robed figure sits between two pillars — one black, one white — before a veil embroidered with pomegranates and palms. She holds a half-concealed scroll and wears a crown of the triple moon. The veil behind her marks the threshold between what is known and what can only be felt.",
+    "shadow_aspect": "Withdrawal into mystery as avoidance; secrets kept harmfully; intuition mistaken for certainty; the refusal to act even when action is clearly needed."
+  },
+  {
+    "card_id": "major_03",
+    "card_name": "The Empress",
+    "arcana": "major",
+    "keywords": ["fertility", "abundance", "creativity", "nurturing", "embodiment", "sensory richness", "the great mother"],
+    "symbolism": "A crowned figure reclines in a lush setting amid wheat fields and pine forest, a stream flowing nearby. She wears a star-studded crown and a robe covered in pomegranates. The heart-shaped shield bearing the symbol of Venus rests beside her. Everything in her presence is in bloom.",
+    "shadow_aspect": "Smothering through care; creativity blocked or hoarded; materialism as a substitute for emotional depth; dependency cultivated and called love."
+  },
+  {
+    "card_id": "major_04",
+    "card_name": "The Emperor",
+    "arcana": "major",
+    "keywords": ["authority", "structure", "stability", "order", "rationality", "protection", "the father principle"],
+    "symbolism": "An armored figure sits rigidly on a stone throne adorned with ram's heads, a scepter in one hand and an orb in the other. Behind him, red mountains rise — the immovable foundation of established power. His gaze is direct, his posture unyielding.",
+    "shadow_aspect": "Rigidity masquerading as strength; control that stifles; authority that demands compliance rather than earning trust; fear of vulnerability expressed as domination."
+  },
+  {
+    "card_id": "major_05",
+    "card_name": "The Hierophant",
+    "arcana": "major",
+    "keywords": ["tradition", "institution", "spiritual guidance", "convention", "initiation", "belonging", "doctrine"],
+    "symbolism": "A priestly figure sits between two pillars in formal vestments, wearing a triple crown, two crossed keys at his feet. Two supplicants kneel before him. He raises one hand in blessing. The crossed keys represent the balance between conscious and unconscious, the gates between sacred and mundane.",
+    "shadow_aspect": "Dogma substituted for genuine faith; conformity that suppresses individuality; spiritual authority that demands compliance rather than inspiring it; tradition preserved at the cost of truth."
+  },
+  {
+    "card_id": "major_06",
+    "card_name": "The Lovers",
+    "arcana": "major",
+    "keywords": ["relationship", "conscious choice", "values alignment", "integration of opposites", "intimacy", "commitment"],
+    "symbolism": "A man and woman stand beneath an angel — Raphael, the healer — with the Tree of Knowledge behind the woman and the Tree of Life behind the man. The sun blazes above. This is not merely a romantic scene but an image of conscious choice between opposites, the soul's commitment to what it values most.",
+    "shadow_aspect": "Avoidance of commitment; choices made from fear rather than values; projection of the anima or animus onto another; love as dependency rather than union."
+  },
+  {
+    "card_id": "major_07",
+    "card_name": "The Chariot",
+    "arcana": "major",
+    "keywords": ["willpower", "determination", "control", "triumph", "harnessing opposites", "momentum", "directed force"],
+    "symbolism": "An armored figure rides a chariot drawn by two sphinxes — one black, one white — without reins, controlling them by force of will alone. The walled city stands behind him; the starred canopy of heaven arches above. His armor bears alchemical symbols. Movement here is controlled paradox.",
+    "shadow_aspect": "Drive without direction; the need to control that prevents necessary surrender; triumph without wisdom; aggression that calls itself ambition."
+  },
+  {
+    "card_id": "major_08",
+    "card_name": "Strength",
+    "arcana": "major",
+    "keywords": ["inner strength", "courage", "patience", "compassion", "taming the instinctual", "gentle mastery"],
+    "symbolism": "A woman adorned with flowers, the lemniscate above her head, gently holds the jaws of a lion. There is no violence — only calm confidence. The mountains behind her suggest endurance. The lion represents the instinctual drives; the woman represents the capacity to work with them rather than against them.",
+    "shadow_aspect": "Suppression of instinct rather than integration; strength performing itself; compassion that enables rather than heals; self-denial deployed as a form of control."
+  },
+  {
+    "card_id": "major_09",
+    "card_name": "The Hermit",
+    "arcana": "major",
+    "keywords": ["solitude", "inner guidance", "contemplation", "withdrawal", "wisdom", "lantern of truth", "the inner teacher"],
+    "symbolism": "A cloaked figure stands on a mountain peak holding a lantern that houses a six-pointed star. His staff grounds him. The darkness around him is deliberate — he has climbed here to see by his own light, away from the noise of the valley below. He is both guide and seeker simultaneously.",
+    "shadow_aspect": "Isolation as avoidance; wisdom hoarded rather than shared; withdrawal that has become permanent rather than restorative; the fear of intimacy dressed as self-sufficiency."
+  },
+  {
+    "card_id": "major_10",
+    "card_name": "Wheel of Fortune",
+    "arcana": "major",
+    "keywords": ["cycles", "turning points", "impermanence", "change", "synchronicity", "opportunity", "fate and agency"],
+    "symbolism": "A great wheel turns in the clouds, bearing alchemical symbols and letters. Three figures cling to its rim — a snake descending, a sphinx at the top, Anubis ascending. The four fixed signs of the zodiac occupy the corners, each holding an open book. What rises must fall; what falls must rise.",
+    "shadow_aspect": "Passivity in the face of change; the belief that forces outside oneself determine everything; refusing to act when the wheel briefly pauses in one's favor."
+  },
+  {
+    "card_id": "major_11",
+    "card_name": "Justice",
+    "arcana": "major",
+    "keywords": ["truth", "fairness", "cause and effect", "accountability", "balance", "integrity", "karmic law"],
+    "symbolism": "A crowned figure sits between two pillars, a raised sword in one hand and scales in the other. The sword is double-edged — truth cuts in both directions. A thin veil between the pillars suggests the limits of human justice. The scales measure not just action but the weight of intention behind it.",
+    "shadow_aspect": "Rigid application of rules without mercy; using justice as a vehicle for cruelty; self-judgment that is disproportionate; the refusal to acknowledge one's own imbalances."
+  },
+  {
+    "card_id": "major_12",
+    "card_name": "The Hanged Man",
+    "arcana": "major",
+    "keywords": ["suspension", "voluntary sacrifice", "new perspective", "liminal space", "surrender", "illumination through stillness"],
+    "symbolism": "A figure hangs upside-down by one foot from a living tree, his expression serene rather than anguished. A halo around his head suggests illumination through surrender. The crossed leg forms a figure-four. He has chosen this position — or arrived at it through something he could not choose otherwise.",
+    "shadow_aspect": "Stagnation disguised as patience; fear of commitment hiding as contemplation; using waiting as avoidance of a move that is already clearly needed."
+  },
+  {
+    "card_id": "major_13",
+    "card_name": "Death",
+    "arcana": "major",
+    "keywords": ["transformation", "endings", "transition", "letting go", "necessary loss", "the threshold", "what persists"],
+    "symbolism": "A skeletal knight on a white horse moves across a landscape — a king fallen before him, a bishop praying, children watching. A sun rises between two towers on the horizon. A boat crosses a distant river. Death here is not destruction but passage — what the figure moves through rather than toward.",
+    "shadow_aspect": "Resistance to necessary endings; clinging to what has outgrown its form; fear of transformation so acute that it prevents living; the ending denied rather than processed."
+  },
+  {
+    "card_id": "major_14",
+    "card_name": "Temperance",
+    "arcana": "major",
+    "keywords": ["balance", "moderation", "patience", "integration", "flow", "the middle way", "alchemy of opposites"],
+    "symbolism": "An angelic figure stands with one foot in water, one on land, pouring liquid between two cups without spilling a drop. Irises bloom nearby. A path leads through the landscape toward a distant crown above mountains. The triangle inside a square on the figure's robe: the spiritual contained within the material.",
+    "shadow_aspect": "Endless moderation that never commits; tolerance of the intolerable; the pursuit of balance as a way of never choosing; peace mistaken for wisdom."
+  },
+  {
+    "card_id": "major_15",
+    "card_name": "The Devil",
+    "arcana": "major",
+    "keywords": ["shadow", "bondage", "compulsion", "the rejected self", "materialism", "the unconscious chains"],
+    "symbolism": "A horned, bat-winged figure sits on a pedestal, right hand raised in a reversed blessing, a torch pointed down. Two figures stand chained before him — their chains loose enough to remove if they looked down. The chains are real; the captivity is also chosen. The shadow is not external.",
+    "shadow_aspect": "This card is itself the shadow. Reversed, it may signal the beginning of awareness: chains being recognized for the first time, the first movement toward examining what has gone unexamined."
+  },
+  {
+    "card_id": "major_16",
+    "card_name": "The Tower",
+    "arcana": "major",
+    "keywords": ["sudden disruption", "revelation", "collapse of false structures", "shock", "liberation through destruction"],
+    "symbolism": "Lightning strikes a tower; its crown is dislodged, two figures fall from the heights, flames burst from the windows. The structure was built on false premises — the lightning is truth arriving without mercy. The crown that falls was never truly earned by what stood beneath it.",
+    "shadow_aspect": "Refusing the lessons of collapse; rebuilding the same structure on the same false foundation; catastrophizing change that is ultimately necessary; the tower that was never struck."
+  },
+  {
+    "card_id": "major_17",
+    "card_name": "The Star",
+    "arcana": "major",
+    "keywords": ["hope", "renewal", "serenity", "vulnerability", "trust", "inspiration", "openness after crisis"],
+    "symbolism": "A naked figure kneels at water's edge, one foot in the stream and one on land, pouring water from two vessels — one into the pool, one onto the earth. Eight stars fill the sky, the largest with eight points. A bird perches in the tree behind. This is the card of recovery — the quiet after the Tower has fallen.",
+    "shadow_aspect": "False hope that delays necessary action; vulnerability used to avoid accountability; idealism disconnected from what is actually present; waiting for rescue rather than acting."
+  },
+  {
+    "card_id": "major_18",
+    "card_name": "The Moon",
+    "arcana": "major",
+    "keywords": ["the unconscious", "illusion", "anxiety", "the unknown", "cyclical change", "shadow material", "what stirs beneath"],
+    "symbolism": "A full moon with a face gazes down on a landscape where a crayfish emerges from a pool, a dog and wolf howl from opposite sides of a path, and two towers stand at the horizon. The path leads into uncertainty. The moon sheds reflected, not direct, light — things are not as they appear.",
+    "shadow_aspect": "Being trapped in anxiety or illusion; fears that have become the only available story; the unconscious content that has been avoided long enough to grow teeth."
+  },
+  {
+    "card_id": "major_19",
+    "card_name": "The Sun",
+    "arcana": "major",
+    "keywords": ["vitality", "joy", "clarity", "celebration", "the inner child", "radiance", "full expression"],
+    "symbolism": "A child rides a white horse before a stone wall, arms outstretched, a large red banner in hand. Sunflowers bloom behind the wall. The sun above radiates direct, unambiguous light. The child is unashamed — pure presence, unguarded expression, no division between inside and outside.",
+    "shadow_aspect": "Performative happiness that denies complexity; joy that requires an audience; an inability to sit with darkness; childlike openness that refuses adult responsibility."
+  },
+  {
+    "card_id": "major_20",
+    "card_name": "Judgement",
+    "arcana": "major",
+    "keywords": ["reckoning", "awakening", "answering the call", "absolution", "evaluation", "transformation", "hearing what calls"],
+    "symbolism": "An angel blows a trumpet from the clouds; figures rise from coffins in the water below, arms raised toward the light. The mountains behind them are impassable — there is no going back. This is the moment of being called forward by something larger than the self.",
+    "shadow_aspect": "The call heard but refused; self-judgment so harsh that it paralyzes; absolution sought but not enacted; waiting to be forgiven without changing the thing that requires forgiveness."
+  },
+  {
+    "card_id": "major_21",
+    "card_name": "The World",
+    "arcana": "major",
+    "keywords": ["completion", "integration", "wholeness", "achievement", "the end of a cycle", "the dance of becoming"],
+    "symbolism": "A dancing figure draped in a purple sash stands within an elliptical wreath, holding two wands. The four fixed creatures of the zodiac occupy the corners. The figure is androgynous; the wreath is both a crown and a zero. The dance is not a performance but the movement of something finally integrated.",
+    "shadow_aspect": "Incompletion declared complete; premature closure; refusing to step into the next cycle; achievement without the wisdom that should follow it."
+  },
+  {
+    "card_id": "wands_ace",
+    "card_name": "Ace of Wands",
+    "arcana": "minor",
+    "suit": "wands",
+    "keywords": ["creative spark", "new initiative", "inspiration", "potential", "will", "primal fire"],
+    "symbolism": "A hand emerges from a cloud grasping a living wand that sprouts leaves. Buds of new growth appear along its length. A castle stands on a distant hill; fertile land spreads below. The wand is alive — this is not an object but a living force extended in offer.",
+    "shadow_aspect": "Creative energy with no direction; the spark that consumes rather than illuminates; beginnings that never develop into anything because another beginning is always more appealing."
+  },
+  {
+    "card_id": "wands_02",
+    "card_name": "Two of Wands",
+    "arcana": "minor",
+    "suit": "wands",
+    "keywords": ["planning", "vision", "surveying possibilities", "the known and unknown", "early ambition"],
+    "symbolism": "A figure stands on a castle parapet, holding a wand and a small globe, gazing at a vast sea. A second wand is fixed to the wall beside him. He has mastered his near ground; now he considers what lies beyond. The globe is small in his hand — mastery of one domain, vast ignorance of larger ones.",
+    "shadow_aspect": "Planning that substitutes for action; the fear of leaving what is familiar; ambition that remains permanently in the mind."
+  },
+  {
+    "card_id": "wands_03",
+    "card_name": "Three of Wands",
+    "arcana": "minor",
+    "suit": "wands",
+    "keywords": ["expansion", "foresight", "ventures underway", "awaiting results", "enterprise launched"],
+    "symbolism": "A figure stands on a cliff, staff in hand, watching ships sail away across a golden sea. Three wands are planted behind him. Unlike the Two, he has already acted — the ships are his ventures, already launched. He watches with patience born of having moved.",
+    "shadow_aspect": "Watching and waiting as a substitute for further action; inability to launch the next effort while the first is still outstanding; overextension disguised as expansion."
+  },
+  {
+    "card_id": "wands_04",
+    "card_name": "Four of Wands",
+    "arcana": "minor",
+    "suit": "wands",
+    "keywords": ["celebration", "homecoming", "community", "milestone", "foundation", "temporary rest"],
+    "symbolism": "Four wands form a garlanded canopy. In the background, people celebrate before a castle standing firm. Two figures raise bouquets in welcome. This is a genuine pause within a larger effort — the achievement of a milestone, not a final destination.",
+    "shadow_aspect": "Celebrating the incomplete as though it were complete; using communal joy to avoid individual work; homecoming that is actually a retreat from what still needs doing."
+  },
+  {
+    "card_id": "wands_05",
+    "card_name": "Five of Wands",
+    "arcana": "minor",
+    "suit": "wands",
+    "keywords": ["conflict", "competition", "creative tension", "friction", "differing perspectives", "the struggle before order"],
+    "symbolism": "Five young figures brandish wands, each opposing the others — though no one appears to be winning or losing. The landscape is open. This is not war but strife: the creative friction of opposing wills and perspectives that has not yet resolved into structure.",
+    "shadow_aspect": "Conflict for its own sake; arguments that substitute for collaboration; the competitive instinct that disrupts rather than sharpens; drama as stimulation."
+  },
+  {
+    "card_id": "wands_06",
+    "card_name": "Six of Wands",
+    "arcana": "minor",
+    "suit": "wands",
+    "keywords": ["victory", "recognition", "public success", "leadership", "confidence", "earned acclaim"],
+    "symbolism": "A victorious figure rides horseback through a crowd, laurel wreath on head and wand, others raising their wands in acclaim. The rider faces forward — this is earned recognition, not a surprise. The crowd follows willingly.",
+    "shadow_aspect": "Dependence on external validation; pride that closes to feedback; victory that plants the seed of arrogance; confidence that requires an audience to exist."
+  },
+  {
+    "card_id": "wands_07",
+    "card_name": "Seven of Wands",
+    "arcana": "minor",
+    "suit": "wands",
+    "keywords": ["defense", "perseverance", "standing one's ground", "challenge", "conviction", "holding position"],
+    "symbolism": "A figure stands on higher ground, brandishing a wand against six others rising from below. He has the advantage of position but is outnumbered. His stance is determined, his footing slightly precarious. The challenge is real but not impossible.",
+    "shadow_aspect": "Defensiveness that mistakes all difference for attack; the exhaustion of permanent vigilance; holding a position out of stubbornness rather than genuine conviction."
+  },
+  {
+    "card_id": "wands_08",
+    "card_name": "Eight of Wands",
+    "arcana": "minor",
+    "suit": "wands",
+    "keywords": ["swift action", "momentum", "communication", "rapid movement", "alignment", "news arriving"],
+    "symbolism": "Eight wands fly through a clear sky, parallel and purposeful, aimed at fertile land below. There are no figures — only the wands in flight. A river runs below in the same direction. Everything is aligned and moving fast. The energy is unobstructed.",
+    "shadow_aspect": "Scattered activity that mistakes movement for progress; communication without listening; hasty decisions; things moving faster than they can be integrated."
+  },
+  {
+    "card_id": "wands_09",
+    "card_name": "Nine of Wands",
+    "arcana": "minor",
+    "suit": "wands",
+    "keywords": ["resilience", "persistence", "near completion", "guardedness", "the final test", "battle-worn endurance"],
+    "symbolism": "A bandaged figure leans on a wand, eight others planted behind him in a row. He looks over his shoulder with wary eyes — battle-worn but not defeated. He has come far and is nearly done but expects more challenge. His wounds are visible and unashamed.",
+    "shadow_aspect": "Hypervigilance that has outlasted its usefulness; the inability to rest even when rest is safe; perseverance that has become compulsive; distrust that prevents receiving help."
+  },
+  {
+    "card_id": "wands_10",
+    "card_name": "Ten of Wands",
+    "arcana": "minor",
+    "suit": "wands",
+    "keywords": ["burden", "overextension", "carrying too much", "responsibility", "the final stretch", "completion at a cost"],
+    "symbolism": "A figure struggles forward under ten bundled wands, unable to see ahead because of the load. A town is visible in the near distance. The burden is real and has been carried alone. Relief is close, though the figure may not know it.",
+    "shadow_aspect": "Martyrdom disguised as responsibility; the inability to delegate or release; the burden that has become identity; finishing what should have been put down long before."
+  },
+  {
+    "card_id": "wands_page",
+    "card_name": "Page of Wands",
+    "arcana": "minor",
+    "suit": "wands",
+    "keywords": ["enthusiasm", "exploration", "new ideas", "the spark before action", "playfulness", "creative curiosity"],
+    "symbolism": "A young figure stands in a desert landscape, holding a large wand and gazing at it with curiosity and confidence. Three pyramids rise in the distance. The Page is not yet in motion — he is in the stage of inspiration, feeling the fire before anything is lit.",
+    "shadow_aspect": "Scattered enthusiasm that never focuses; all inspiration, no execution; immaturity in the face of creative challenge; the idea person who cannot be held to follow-through."
+  },
+  {
+    "card_id": "wands_knight",
+    "card_name": "Knight of Wands",
+    "arcana": "minor",
+    "suit": "wands",
+    "keywords": ["action", "adventure", "impulsiveness", "confidence", "passionate pursuit", "the fire in motion"],
+    "symbolism": "A knight rides a rearing horse through a desert, wand held aloft, his armor decorated with fire salamanders. He moves fast and with abandon. The horse's energy mirrors his own — both pointed forward, neither looking back.",
+    "shadow_aspect": "Recklessness without regard for consequence; burning bright but briefly; charging without understanding what one is charging at; the charisma that leaves wreckage in its wake."
+  },
+  {
+    "card_id": "wands_queen",
+    "card_name": "Queen of Wands",
+    "arcana": "minor",
+    "suit": "wands",
+    "keywords": ["confidence", "independence", "warmth", "creative authority", "passion", "the feminine fire"],
+    "symbolism": "A queen sits on a solar throne adorned with lions and sunflowers, holding a wand in one hand and a sunflower in the other. A black cat sits at her feet. She faces outward, open rather than guarded. The sunflower and cat together suggest both daylight presence and an honest relationship with the shadow.",
+    "shadow_aspect": "Dominance disguised as warmth; manipulation through charm; the performance of confidence that reveals nothing real; social brilliance that keeps others at arm's length."
+  },
+  {
+    "card_id": "wands_king",
+    "card_name": "King of Wands",
+    "arcana": "minor",
+    "suit": "wands",
+    "keywords": ["visionary leadership", "creative mastery", "authority", "inspiration", "command", "the fire mastered"],
+    "symbolism": "A crowned king sits on a throne decorated with lions and fire salamanders, a live salamander at his feet. He leans slightly forward, as if about to rise. He holds a wand with casual authority. He has mastered fire — he is not consumed by it.",
+    "shadow_aspect": "Tyranny disguised as vision; burning others out in service of one's own fire; the leader who cannot follow; big-picture thinking that dismisses what is concrete and close."
+  },
+  {
+    "card_id": "cups_ace",
+    "card_name": "Ace of Cups",
+    "arcana": "minor",
+    "suit": "cups",
+    "keywords": ["emotional beginning", "love", "compassion", "new relationship", "intuition", "the overflowing heart"],
+    "symbolism": "A chalice overflows with five streams of water, a hand emerging from a cloud to offer it. A white dove descends bearing a wafer. The water falls into a lotus-filled pool below. The cup cannot be contained — it offers abundance to whatever receives it.",
+    "shadow_aspect": "Emotional overwhelm; the flood that drowns rather than nourishes; sentimentality that replaces genuine feeling; the offering that is too much too soon."
+  },
+  {
+    "card_id": "cups_02",
+    "card_name": "Two of Cups",
+    "arcana": "minor",
+    "suit": "cups",
+    "keywords": ["partnership", "mutual recognition", "connection", "attraction", "reciprocity", "shared values"],
+    "symbolism": "A man and woman face each other, each holding a cup. Between them rises the caduceus of Hermes topped with a winged lion. The exchange is balanced: neither giving nor receiving alone, but sharing equally. A home stands in the background.",
+    "shadow_aspect": "Codependency disguised as connection; the mirror relationship that prevents individuation; attraction that obscures incompatibility; the partnership that requires sameness to feel safe."
+  },
+  {
+    "card_id": "cups_03",
+    "card_name": "Three of Cups",
+    "arcana": "minor",
+    "suit": "cups",
+    "keywords": ["community", "celebration", "friendship", "abundance", "shared joy", "being witnessed"],
+    "symbolism": "Three women dance in a circle, each holding a cup aloft, surrounded by fruits and flowers. The harvest is real. This is not solitary pleasure but communal joy — the specific pleasure of being celebrated by those who genuinely know you.",
+    "shadow_aspect": "Cliques that exclude; celebration that tips into excess; community that demands conformity; joy that cannot exist without being gathered."
+  },
+  {
+    "card_id": "cups_04",
+    "card_name": "Four of Cups",
+    "arcana": "minor",
+    "suit": "cups",
+    "keywords": ["apathy", "contemplation", "withdrawal", "ennui", "missing what's offered", "inner absorption"],
+    "symbolism": "A figure sits under a tree, arms and legs crossed, gazing at three cups on the ground. A cloud hand extends a fourth cup toward him — an offer he has not yet noticed. The question is whether he is pondering what he has or simply elsewhere.",
+    "shadow_aspect": "Depression as cave; the gift unrecognized because attention is turned entirely inward; withdrawal that has curdled into dissatisfaction."
+  },
+  {
+    "card_id": "cups_05",
+    "card_name": "Five of Cups",
+    "arcana": "minor",
+    "suit": "cups",
+    "keywords": ["loss", "grief", "regret", "partial loss", "what remains", "mourning"],
+    "symbolism": "A cloaked figure stands before three spilled cups, head bowed. Behind him, two cups remain upright — but he has not turned to see them. A river flows nearby; a bridge and a castle mark the way forward. The way forward exists, but the figure faces his loss.",
+    "shadow_aspect": "Grief that refuses to acknowledge what was not lost; the backward gaze that obscures the path forward; regret weaponized against the self; mourning that has become permanent residence."
+  },
+  {
+    "card_id": "cups_06",
+    "card_name": "Six of Cups",
+    "arcana": "minor",
+    "suit": "cups",
+    "keywords": ["nostalgia", "childhood", "memory", "innocence", "gift", "past influences on present"],
+    "symbolism": "A boy offers a large cup of white flowers to a smaller girl in an orderly old village setting. The figures are innocent; the setting is still. Behind them, the past stretches back. The gesture is pure and uncomplicated — the simplicity of an earlier time before complexity arrived.",
+    "shadow_aspect": "Nostalgia that distorts what the past actually was; the idealization of childhood that prevents adult intimacy; living in memory rather than presence; the kindness that infantilizes."
+  },
+  {
+    "card_id": "cups_07",
+    "card_name": "Seven of Cups",
+    "arcana": "minor",
+    "suit": "cups",
+    "keywords": ["fantasy", "illusion", "too many possibilities", "the dream state", "choice paralysis", "the imagination untethered"],
+    "symbolism": "A silhouetted figure contemplates seven cups floating in clouds, each containing a different vision: a veiled figure, a glowing face, a serpent, a castle, treasures, a laurel wreath, a dragon. Some are gifts; some are dangers. The figure cannot yet tell which is which.",
+    "shadow_aspect": "Fantasy that substitutes for action; wishful thinking about options not genuinely available; the inability to choose; seduction by the wrong cup because all cups seem equally real."
+  },
+  {
+    "card_id": "cups_08",
+    "card_name": "Eight of Cups",
+    "arcana": "minor",
+    "suit": "cups",
+    "keywords": ["withdrawal", "leaving behind", "the search for meaning", "walking away", "the inward turn"],
+    "symbolism": "A cloaked figure turns away from eight cups arranged in two rows — with one notable gap, suggesting incompletion — and walks into a mountain landscape under a full moon. The cups are not shattered; they are simply left. The mountains ahead are real.",
+    "shadow_aspect": "Abandonment disguised as spiritual seeking; the inability to stay through difficulty; running from intimacy; leaving that avoids what completion would require."
+  },
+  {
+    "card_id": "cups_09",
+    "card_name": "Nine of Cups",
+    "arcana": "minor",
+    "suit": "cups",
+    "keywords": ["satisfaction", "wish fulfillment", "contentment", "pleasure", "emotional abundance", "gratitude"],
+    "symbolism": "A self-satisfied figure sits before nine cups arranged in an arc behind him, arms crossed, a quiet smile on his face. His posture suggests ease and pride. He has what he wanted, and he knows it.",
+    "shadow_aspect": "Self-satisfaction that closes to growth; pleasure as complacency; the wish fulfilled that brings no deeper satisfaction; contentment built on shallow foundations."
+  },
+  {
+    "card_id": "cups_10",
+    "card_name": "Ten of Cups",
+    "arcana": "minor",
+    "suit": "cups",
+    "keywords": ["emotional fulfillment", "family", "lasting happiness", "harmony", "wholeness", "the good life"],
+    "symbolism": "A couple embraces with arms upraised beneath a rainbow of ten cups. Two children dance beside them. A house, hills, and river complete the scene. This is the fullness of emotional life — not a moment but a sustained state that has been built and is being inhabited.",
+    "shadow_aspect": "The perfect image that hides internal dysfunction; happiness performed for the family; the inability to acknowledge imperfection within love; completeness that does not allow for individual longing."
+  },
+  {
+    "card_id": "cups_page",
+    "card_name": "Page of Cups",
+    "arcana": "minor",
+    "suit": "cups",
+    "keywords": ["emotional sensitivity", "imagination", "the unexpected inner message", "creative vision", "dreaming"],
+    "symbolism": "A young figure holds a cup from which a fish unexpectedly emerges, appearing to speak. He looks at the fish with curiosity and openness rather than alarm. He stands by the sea. This is the receptive imagination: an unexpected message from the unconscious, met with wonder.",
+    "shadow_aspect": "Over-sensitivity that cannot function in the world; emotional immaturity; receiving inner messages but never acting on them; the eternal dreamer who finds waking a disappointment."
+  },
+  {
+    "card_id": "cups_knight",
+    "card_name": "Knight of Cups",
+    "arcana": "minor",
+    "suit": "cups",
+    "keywords": ["romance", "idealism", "the quest", "emotional invitation", "following feeling", "creative pursuit"],
+    "symbolism": "A knight rides a white horse at a slow, deliberate pace, holding a cup out before him as an offering. His armor is decorated with fish; his winged helmet suggests imagination in service of movement. A river flows nearby. He is not rushing — he moves with feeling, not against it.",
+    "shadow_aspect": "Moodiness that manipulates; idealism that cannot tolerate reality; the seducer who vanishes when the feeling fades; romantic projection that replaces genuine knowing of the other."
+  },
+  {
+    "card_id": "cups_queen",
+    "card_name": "Queen of Cups",
+    "arcana": "minor",
+    "suit": "cups",
+    "keywords": ["emotional intelligence", "empathy", "compassion", "deep feeling", "the unconscious", "psychic attunement"],
+    "symbolism": "A queen sits on a throne at the water's edge, holding an elaborate closed cup she does not open. Her throne is carved with sea creatures; the water around her reflects light. She gazes at the cup inwardly — she is in communion with it, not displaying it.",
+    "shadow_aspect": "Emotional absorption that dissolves the self; empathy as enmeshment; the one who can feel everything in others and nothing for themselves; nurturing others as a way of avoiding what one needs."
+  },
+  {
+    "card_id": "cups_king",
+    "card_name": "King of Cups",
+    "arcana": "minor",
+    "suit": "cups",
+    "keywords": ["emotional maturity", "mastery of feeling", "wisdom", "compassion", "holding complexity", "steadiness in the storm"],
+    "symbolism": "A king sits on a floating throne in a turbulent sea, unmoved. He holds a cup in one hand and a scepter in the other. A fish leaps from the water beside him; a ship sails in the distance. He is not absent from emotion — he is present to it without being swept away.",
+    "shadow_aspect": "Emotional coldness disguised as maturity; the counselor who cannot be counseled; mastery of others' feelings as a form of control; detachment from one's own emotional life called equanimity."
+  },
+  {
+    "card_id": "swords_ace",
+    "card_name": "Ace of Swords",
+    "arcana": "minor",
+    "suit": "swords",
+    "keywords": ["mental clarity", "breakthrough", "truth", "new perspective", "the cut through illusion", "the double-edged mind"],
+    "symbolism": "A hand emerges from a cloud holding an upright sword crowned with a golden crown from which sprout olive and palm branches. Mountains rise in the background. The sword is double-edged — it cuts in both directions. This is the power of the mind at its most undiluted.",
+    "shadow_aspect": "Truth used as a weapon; the clarity that devastates rather than illuminates; mental brilliance deployed without empathy; the sword that severs without considering what it cuts."
+  },
+  {
+    "card_id": "swords_02",
+    "card_name": "Two of Swords",
+    "arcana": "minor",
+    "suit": "swords",
+    "keywords": ["stalemate", "indecision", "avoidance", "the difficult choice", "blocked awareness", "self-imposed blindness"],
+    "symbolism": "A blindfolded figure sits with arms crossed, holding two swords horizontally across the chest. Behind, a crescent moon reflects on a rocky sea. The blindfold is self-imposed. The rocks suggest that the avoidance of choice is not neutral — it is itself a choice with consequences.",
+    "shadow_aspect": "Permanent indecision that mistakes avoidance for safety; denial of what is already known; the peace of not-choosing that quietly becomes its own form of suffering."
+  },
+  {
+    "card_id": "swords_03",
+    "card_name": "Three of Swords",
+    "arcana": "minor",
+    "suit": "swords",
+    "keywords": ["heartbreak", "sorrow", "grief", "betrayal", "painful truth", "the pierced heart"],
+    "symbolism": "Three swords pierce a red heart floating against a grey, rain-streaked sky. There is nothing else. This card does not equivocate. It is an image of emotional pain without consolation — not punishment, but reality as it sometimes arrives.",
+    "shadow_aspect": "Grief prolonged past its service; heartbreak wielded against the self; the wound kept open by choice; pain as the only available identity."
+  },
+  {
+    "card_id": "swords_04",
+    "card_name": "Four of Swords",
+    "arcana": "minor",
+    "suit": "swords",
+    "keywords": ["rest", "recuperation", "contemplation", "retreat", "stillness after conflict", "integration"],
+    "symbolism": "A knight lies in effigy on a stone tomb, one sword beneath him, three above. A stained-glass window shows a scene of blessing. This is not death — the effigy suggests chosen stillness, a pause between engagements. The church setting implies inner preparation.",
+    "shadow_aspect": "Retreat that has become avoidance; contemplation that never returns to action; the rest that has outlasted its purpose; withdrawal from a life that is not actually overwhelming."
+  },
+  {
+    "card_id": "swords_05",
+    "card_name": "Five of Swords",
+    "arcana": "minor",
+    "suit": "swords",
+    "keywords": ["defeat", "hollow victory", "conflict", "self-interest at others' expense", "the cost of winning"],
+    "symbolism": "A smirking figure gathers fallen swords while two others walk away in defeat. Clouds gather above a turbulent sea. The victory here is real, but something has been lost in achieving it. The figure's expression suggests he does not yet know what.",
+    "shadow_aspect": "Winning in a way that destroys the relationship; treating every exchange as a competition to dominate; the manipulation that achieves its goal while demolishing trust; hubris that cannot see what it has lost."
+  },
+  {
+    "card_id": "swords_06",
+    "card_name": "Six of Swords",
+    "arcana": "minor",
+    "suit": "swords",
+    "keywords": ["transition", "moving away from trouble", "passage", "relief", "healing passage", "the journey forward"],
+    "symbolism": "A ferryman poles a boat across calm waters. Two passengers — a cloaked figure and a child — sit facing forward. Six swords stand upright in the prow, crossing the water with them. The far shore is calmer than where they came from, but the swords are still present.",
+    "shadow_aspect": "The move that does not resolve what it leaves behind; carrying the problem to the new location; the escape that doesn't know it's an escape; transition without the processing that gives it meaning."
+  },
+  {
+    "card_id": "swords_07",
+    "card_name": "Seven of Swords",
+    "arcana": "minor",
+    "suit": "swords",
+    "keywords": ["strategy", "deception", "cunning", "acting alone", "the tactical retreat", "taking what one can"],
+    "symbolism": "A figure tiptoes away from a military camp carrying five swords, having left two planted in the ground. He looks back over his shoulder with a knowing expression. The camp is unaware. Whether this is theft, liberation, or necessary strategy depends entirely on the context.",
+    "shadow_aspect": "Deception that has become habitual; taking what hasn't been offered; the lone operator who cannot trust anyone; cleverness that has entirely replaced integrity."
+  },
+  {
+    "card_id": "swords_08",
+    "card_name": "Eight of Swords",
+    "arcana": "minor",
+    "suit": "swords",
+    "keywords": ["restriction", "trapped feeling", "self-imposed limitation", "powerlessness", "blindness to options"],
+    "symbolism": "A bound, blindfolded figure stands surrounded by eight swords planted around her. A castle is visible on a cliff above. The swords are not a cage — she could walk between them. The bindings are real but insufficient to keep her. Something else holds her in place.",
+    "shadow_aspect": "The prison of one's own making; believing in restrictions that are actually internalized stories; the comfort of powerlessness that requires no decisions; the one who stays because leaving seems more frightening than captivity."
+  },
+  {
+    "card_id": "swords_09",
+    "card_name": "Nine of Swords",
+    "arcana": "minor",
+    "suit": "swords",
+    "keywords": ["anxiety", "nightmares", "dread", "mental suffering", "3am darkness", "despair"],
+    "symbolism": "A figure sits up in bed, head in hands, in darkness. Nine swords hang on the wall above. A quilt decorated with astrological symbols and roses suggests the dreamer has resources. The suffering is real, but the external situation may be less dire than the mind's version of it.",
+    "shadow_aspect": "Anxiety that has become the only available narrative; catastrophizing that prevents rest; suffering that has become familiar enough to be preferred; the refusal of comfort because comfort would require giving something up."
+  },
+  {
+    "card_id": "swords_10",
+    "card_name": "Ten of Swords",
+    "arcana": "minor",
+    "suit": "swords",
+    "keywords": ["painful ending", "rock bottom", "the decisive conclusion", "betrayal", "final blow", "the dawn after darkness"],
+    "symbolism": "A figure lies face down, ten swords in his back. Despite everything, one hand makes a gesture of blessing. The sky above is dark, but on the horizon, a golden light appears. This is the end — and also the first visible hint of what follows.",
+    "shadow_aspect": "Dramatization of loss beyond what the situation warrants; victimhood that prevents regeneration; the martyrdom that requires witnessing; staying down after the light has already appeared."
+  },
+  {
+    "card_id": "swords_page",
+    "card_name": "Page of Swords",
+    "arcana": "minor",
+    "suit": "swords",
+    "keywords": ["curiosity", "mental alertness", "quick thinking", "vigilance", "communication", "the sharp young mind"],
+    "symbolism": "A young figure stands on a windy hillside, sword raised, scanning the horizon. The clouds move swiftly; birds wheel overhead. The Page is watchful, slightly defensive, always thinking. The wind moves in the same direction as his gaze.",
+    "shadow_aspect": "Gossip as mental exercise; defensiveness that scans for threat rather than opportunity; cleverness without depth; the sharp word before the considered thought."
+  },
+  {
+    "card_id": "swords_knight",
+    "card_name": "Knight of Swords",
+    "arcana": "minor",
+    "suit": "swords",
+    "keywords": ["ambition", "speed", "intellectual charge", "directness", "assertion", "thought in motion"],
+    "symbolism": "A knight charges forward on a galloping horse, sword raised, face fierce, clouds streaming behind him. Trees bend in the wind of his passing. Nothing about this figure is tentative — he is thought in motion, decisive and entirely unconcerned with what he leaves in his wake.",
+    "shadow_aspect": "The charge that doesn't consider what it destroys; argument for its own sake; intellectual arrogance; the mind that has entirely outrun the heart."
+  },
+  {
+    "card_id": "swords_queen",
+    "card_name": "Queen of Swords",
+    "arcana": "minor",
+    "suit": "swords",
+    "keywords": ["clear thinking", "perceptiveness", "independence", "honest wisdom", "the sharp mind with feeling"],
+    "symbolism": "A crowned queen sits on a carved throne, sword raised in one hand, the other extended as if in greeting or in cutting away. Her face is serious but not cruel. She has experienced loss — the carved figures suggest mourning — and has emerged with clarity rather than bitterness.",
+    "shadow_aspect": "Coldness that has given up on warmth; the wit deployed as cruelty; independence that has hardened into isolation; cutting through everything rather than discerning what deserves to remain."
+  },
+  {
+    "card_id": "swords_king",
+    "card_name": "King of Swords",
+    "arcana": "minor",
+    "suit": "swords",
+    "keywords": ["intellectual authority", "judgment", "truth", "strategic thinking", "ethical clarity", "the mind in command"],
+    "symbolism": "A king sits on a throne, sword held straight and upright, face direct and composed. His throne is decorated with butterflies and crescent moons — transformation and intuition in service of reason. He does not lean. He sits in the center, fully present.",
+    "shadow_aspect": "Authority without mercy; the judge who has never been judged; rules deployed to protect power; intelligence used to win rather than to understand."
+  },
+  {
+    "card_id": "pentacles_ace",
+    "card_name": "Ace of Pentacles",
+    "arcana": "minor",
+    "suit": "pentacles",
+    "keywords": ["material beginning", "opportunity", "prosperity", "grounded potential", "new resource", "the physical world"],
+    "symbolism": "A hand extends from a cloud, holding a single golden pentacle above a garden path leading through a flowering arch to mountains beyond. The garden is already cultivated. This is abundance offered — not abstract but specific, not future but present.",
+    "shadow_aspect": "Opportunity grasped without discernment; material focus that ignores deeper dimensions; the gift that comes with hidden cost; hoarding at the very moment of potential."
+  },
+  {
+    "card_id": "pentacles_02",
+    "card_name": "Two of Pentacles",
+    "arcana": "minor",
+    "suit": "pentacles",
+    "keywords": ["balance", "adaptability", "juggling priorities", "managing change", "flexibility under pressure"],
+    "symbolism": "A figure dances, juggling two pentacles connected by an infinity loop, while ships ride waves behind him. He is in motion, but his motion has rhythm. The sea behind him is turbulent; his dance is not.",
+    "shadow_aspect": "Constant busyness that prevents depth; the anxiety beneath the juggling that is never acknowledged; adaptability that never rests long enough to know what it actually wants."
+  },
+  {
+    "card_id": "pentacles_03",
+    "card_name": "Three of Pentacles",
+    "arcana": "minor",
+    "suit": "pentacles",
+    "keywords": ["collaboration", "craftsmanship", "learning", "early mastery", "teamwork", "building together"],
+    "symbolism": "A craftsman works on a cathedral arch as two others — one holding plans, one in religious robes — consult with him. The apprentice's work is valued alongside the planners'. Three different kinds of knowledge are required; no one person holds all of them.",
+    "shadow_aspect": "The skill that resists feedback; the craftsman who won't collaborate; learning halted at competence; pride that mistakes the current stage of mastery for its completion."
+  },
+  {
+    "card_id": "pentacles_04",
+    "card_name": "Four of Pentacles",
+    "arcana": "minor",
+    "suit": "pentacles",
+    "keywords": ["security", "control", "holding on", "material stability", "conservatism", "fear of loss"],
+    "symbolism": "A crowned figure sits before a city, one pentacle clutched to his chest, one beneath each foot, one balanced on his crown. He cannot move without losing one. His posture is that of someone protecting everything from everyone.",
+    "shadow_aspect": "Hoarding that has become identity; security that has become a prison; the refusal to spend, share, or risk; the accumulation that can never be enough because the fear beneath it is not about things."
+  },
+  {
+    "card_id": "pentacles_05",
+    "card_name": "Five of Pentacles",
+    "arcana": "minor",
+    "suit": "pentacles",
+    "keywords": ["hardship", "material loss", "isolation", "feeling left out", "poverty", "the body in difficulty"],
+    "symbolism": "Two figures in worn clothing pass by a lit stained-glass window in the snow — one on crutches, one hunched against the cold. The light in the window is warm and close, but they do not stop. They are outside looking in, or they believe they are.",
+    "shadow_aspect": "Hardship that is real but not as permanent as it feels; the door not tried because it looks closed; the community not asked because rejection seems certain; suffering that refuses the window."
+  },
+  {
+    "card_id": "pentacles_06",
+    "card_name": "Six of Pentacles",
+    "arcana": "minor",
+    "suit": "pentacles",
+    "keywords": ["generosity", "giving and receiving", "charity", "the balance of resources", "power in exchange"],
+    "symbolism": "A wealthy merchant weighs coins on a scale while distributing money to two kneeling figures. Six pentacles are suspended above. The scales are central — this is not mere charity but the weighing of worth and need. The giver holds all the power; the receivers are supplicants.",
+    "shadow_aspect": "Generosity as control; giving with conditions unstated; the power differential in all charitable exchange; the receiver who cannot ask; the giver who needs to be needed."
+  },
+  {
+    "card_id": "pentacles_07",
+    "card_name": "Seven of Pentacles",
+    "arcana": "minor",
+    "suit": "pentacles",
+    "keywords": ["patience", "assessment", "long-term investment", "waiting for harvest", "pausing to evaluate"],
+    "symbolism": "A gardener rests on his hoe, looking at a vine heavy with pentacles. He has worked long. The harvest is not yet complete, but the fruit is evident. This is the moment between planting and full harvest — the necessary pause of assessment.",
+    "shadow_aspect": "The wait that is actually avoidance; effort continued past the point of usefulness; the gardener who cannot leave the garden; patience that has quietly become passivity."
+  },
+  {
+    "card_id": "pentacles_08",
+    "card_name": "Eight of Pentacles",
+    "arcana": "minor",
+    "suit": "pentacles",
+    "keywords": ["diligence", "skill development", "craftsmanship", "focused work", "repetition with purpose"],
+    "symbolism": "A craftsman sits at his workbench, carving pentacles one by one. Six are already hung on the wall beside him; he works on the seventh. His posture is focused and deliberate. A distant town is visible but not his concern. This is the pleasure of mastery in the making.",
+    "shadow_aspect": "Busy work that substitutes for meaningful work; the perfectionist who cannot complete; skill as a place to hide; the craftsman always in process and never seen."
+  },
+  {
+    "card_id": "pentacles_09",
+    "card_name": "Nine of Pentacles",
+    "arcana": "minor",
+    "suit": "pentacles",
+    "keywords": ["abundance", "self-sufficiency", "independence", "material satisfaction", "earned comfort", "elegant solitude"],
+    "symbolism": "A finely dressed figure stands in a prosperous garden, a hooded falcon on one hand. Nine pentacles hang in the vines around her. A large house is visible in the distance. A snail at her feet suggests she is unhurried. This is not inherited wealth but earned — and enjoyed in solitude.",
+    "shadow_aspect": "Independence that has quietly become loneliness; the garden enjoyed alone because intimacy seemed too costly; abundance that has not been shared; the falcon still hooded — the instinctual self, still kept."
+  },
+  {
+    "card_id": "pentacles_10",
+    "card_name": "Ten of Pentacles",
+    "arcana": "minor",
+    "suit": "pentacles",
+    "keywords": ["legacy", "family wealth", "lasting foundation", "tradition", "intergenerational stability", "material completion"],
+    "symbolism": "An old figure in an embroidered cloak sits with two dogs at the entrance to a city, watching his family — a couple, a child — in conversation. Ten pentacles are arranged in the Kabbalistic Tree of Life pattern. Across generations, something has been built and preserved.",
+    "shadow_aspect": "The weight of legacy on those who must inherit it; tradition that cannot be questioned; the patriarch who gives materially but not emotionally; wealth passed down without the wisdom that should accompany it."
+  },
+  {
+    "card_id": "pentacles_page",
+    "card_name": "Page of Pentacles",
+    "arcana": "minor",
+    "suit": "pentacles",
+    "keywords": ["study", "practical learning", "diligence", "grounded ambition", "the student of material things"],
+    "symbolism": "A young figure stands in a flowering field, gazing intently at a pentacle held up before them. Mountains rise in the distance; flowers bloom underfoot. The Page is absorbed, unhurried, entirely present to the object of study.",
+    "shadow_aspect": "Endless preparation that never becomes beginning; the student who cannot graduate; practical focus that ignores everything imaginal; ambition that exists entirely in the planning."
+  },
+  {
+    "card_id": "pentacles_knight",
+    "card_name": "Knight of Pentacles",
+    "arcana": "minor",
+    "suit": "pentacles",
+    "keywords": ["methodical action", "reliability", "thoroughness", "commitment to the task", "slow and steady"],
+    "symbolism": "A knight sits astride a heavy horse that stands completely still, holding a single pentacle. Unlike the other knights, he is not moving. He surveys the tilled field before him. The work is serious; the horse is bred for labor, not speed.",
+    "shadow_aspect": "The perfectionism that prevents starting; thoroughness that has become rigidity; reliability so complete that no one else is trusted to help; the one who carries the weight and quietly resents that no one offers to share it."
+  },
+  {
+    "card_id": "pentacles_queen",
+    "card_name": "Queen of Pentacles",
+    "arcana": "minor",
+    "suit": "pentacles",
+    "keywords": ["practical wisdom", "material nurturing", "abundance", "groundedness", "care for the body", "earthy generosity"],
+    "symbolism": "A queen sits on a lush throne, a pentacle in her lap, surrounded by roses, fruit trees, and garden in full bloom. A rabbit leaps nearby. Her attention is wholly on the pentacle — she tends it with the same care as everything around her.",
+    "shadow_aspect": "Comfort used to avoid growth; nurturing that prevents independence in others; the body's needs crowding out the soul's; security that has become complacency dressed as contentment."
+  },
+  {
+    "card_id": "pentacles_king",
+    "card_name": "King of Pentacles",
+    "arcana": "minor",
+    "suit": "pentacles",
+    "keywords": ["material mastery", "reliable authority", "prosperity", "the builder", "earthy power", "stable achievement"],
+    "symbolism": "A king sits on a throne adorned with bulls and vines, wearing armor beneath his crown, a scepter in one hand and a golden pentacle in the other. His robes are covered with grapes and vines — harvest imagery. A castle and cultivated land lie behind him. He has built this.",
+    "shadow_aspect": "Materialism that has become the only value; the builder who cannot stop building; wealth that substitutes for emotional intelligence; power held so tightly it cannot be shared or passed on."
+  }
+]

@@ -1,0 +1,80 @@
+name: Prompt Eval
+
+on:
+  pull_request:
+    paths:
+      - 'docs/prompts/**'
+      - 'data/cards.json'
+      - 'evals/**'
+
+jobs:
+  prompt-eval:
+    name: Run prompt eval suite
+    runs-on: ubuntu-latest
+    permissions:
+      # Needed to post PR comments
+      pull-requests: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      # ---------------------------------------------------------------------------
+      # Phase 1: Rule-based hard checks only (fast, no API cost).
+      # This catches mechanical violations immediately, before spending tokens.
+      # ---------------------------------------------------------------------------
+      - name: Hard constraint checks (rule-based only)
+        run: npx tsx evals/runner.ts --skip-judge --output=terminal
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+
+      # ---------------------------------------------------------------------------
+      # Phase 2: Full eval suite including LLM judge.
+      # We use continue-on-error so that the next step (posting the PR comment)
+      # always runs. The actual CI failure is enforced in the final step.
+      # ---------------------------------------------------------------------------
+      - name: Full eval suite with LLM judge
+        id: full-eval
+        run: npx tsx evals/runner.ts --output=markdown > eval-results.md
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        continue-on-error: true
+
+      # ---------------------------------------------------------------------------
+      # Post results as a PR comment so reviewers see them in context.
+      # The comment is updated on re-runs (find-and-replace by marker).
+      # ---------------------------------------------------------------------------
+      - name: Find existing eval comment
+        id: find-comment
+        uses: peter-evans/find-comment@v3
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: 'github-actions[bot]'
+          body-includes: '## ✅ Prompt Eval'
+
+      - name: Post or update eval comment
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          comment-id: ${{ steps.find-comment.outputs.comment-id }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body-path: eval-results.md
+          edit-mode: replace
+
+      # ---------------------------------------------------------------------------
+      # Fail the job if hard regressions were detected.
+      # Soft score regressions are surfaced in the PR comment but do not block.
+      # ---------------------------------------------------------------------------
+      - name: Fail on hard regressions
+        if: steps.full-eval.outcome == 'failure'
+        run: |
+          echo "Hard constraint regressions detected. See the PR comment for details."
+          exit 1

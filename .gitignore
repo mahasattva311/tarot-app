@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+
+# Next.js
+.next/
+out/
+
+# Environment (secrets — never commit)
+.env.local
+.env*.local
+
+# OS
+.DS_Store
+
+# Build
+*.tsbuildinfo
+next-env.d.ts

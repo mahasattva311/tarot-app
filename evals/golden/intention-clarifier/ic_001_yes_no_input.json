@@ -1,0 +1,11 @@
+{
+  "id": "ic_001",
+  "agent": "intention-clarifier",
+  "label": "yes_no_input_no_prior_themes",
+  "description": "Tests the closed/yes-no reframe branch. The user's input is a binary question. The agent must gently redirect toward open exploration without asking more than one question, without mentioning cards or tarot, and without using the forbidden word list. No prior reading themes, so this should be treated as a first-time user.",
+  "input": {
+    "user_raw_input": "Will I get the job?",
+    "prior_themes": []
+  },
+  "reference_output": "That's a question that carries a lot of weight right now. Rather than looking for a yes or no, what is it you most want to understand about where you are with this opportunity — the uncertainty itself, or something about what this job represents for you?"
+}
