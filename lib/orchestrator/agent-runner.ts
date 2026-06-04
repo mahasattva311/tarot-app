@@ -67,9 +67,9 @@ const RETRY_BASE_DELAY_MS = 1_000;
 
 const AGENT_MAX_TOKENS: Record<AgentName, number> = {
   'intention-clarifier': 400,
-  'card-interpreter': 500,
-  'spread-synthesizer': 800,
-  'reflection-prompter': 300,
+  'card-interpreter': 1024,
+  'spread-synthesizer': 1500,
+  'reflection-prompter': 600,
   'session-archivist': 0,
 };
 
