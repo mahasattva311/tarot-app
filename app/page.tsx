@@ -114,16 +114,36 @@ function getSessionId(): string {
 // Subcomponents
 // ---------------------------------------------------------------------------
 
-function CardPill({ card }: { card: DrawnCard }) {
+function getArcanaInfo(cardId: string): { symbol: string; label: string } {
+  if (cardId.startsWith('major')) return { symbol: '✦', label: 'Major Arcana' };
+  if (cardId.startsWith('wands')) return { symbol: '⌂', label: 'Wands' };
+  if (cardId.startsWith('cups')) return { symbol: '◎', label: 'Cups' };
+  if (cardId.startsWith('swords')) return { symbol: '✧', label: 'Swords' };
+  if (cardId.startsWith('pentacles')) return { symbol: '◈', label: 'Pentacles' };
+  return { symbol: '✦', label: '' };
+}
+
+function SpreadCard({ card }: { card: DrawnCard }) {
+  const isReversed = card.orientation === 'reversed';
+  const { symbol, label } = getArcanaInfo(card.card_id);
+
   return (
-    <div style={styles.cardPill}>
-      <span style={styles.cardPosition}>{card.position_label}</span>
-      <span style={styles.cardName}>
-        {card.card_name}
-        {card.orientation === 'reversed' && (
-          <span style={styles.reversedBadge}> ↑↓ reversed</span>
-        )}
-      </span>
+    <div style={styles.spreadCardWrapper}>
+      <div style={styles.spreadCardPositionLabel}>{card.position_label}</div>
+      <div
+        style={{
+          ...styles.spreadCard,
+          transform: isReversed ? 'rotate(180deg)' : undefined,
+        }}
+      >
+        <div style={styles.spreadCardSymbol}>{symbol}</div>
+        <div style={styles.spreadCardCenter}>
+          <div style={styles.spreadCardName}>{card.card_name}</div>
+          {label && <div style={styles.spreadCardArcana}>{label}</div>}
+        </div>
+        <div style={styles.spreadCardSymbol}>{symbol}</div>
+      </div>
+      {isReversed && <div style={styles.reversedLabel}>역방향</div>}
     </div>
   );
 }
@@ -330,7 +350,7 @@ export default function TarotPage() {
                 <h2 style={styles.sectionTitle}>The spread</h2>
                 <div style={styles.spreadRow}>
                   {reading.spread.map((card) => (
-                    <CardPill key={card.card_id} card={card} />
+                    <SpreadCard key={card.card_id} card={card} />
                   ))}
                 </div>
               </section>
@@ -495,33 +515,69 @@ const styles: Record<string, React.CSSProperties> = {
   },
   spreadRow: {
     display: 'flex',
-    gap: '0.75rem',
-    flexWrap: 'wrap',
+    gap: '1rem',
+    justifyContent: 'center',
   },
-  cardPill: {
-    backgroundColor: '#1a1728',
-    border: '1px solid #3a3550',
-    borderRadius: '6px',
-    padding: '0.6rem 0.85rem',
+  spreadCardWrapper: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '0.2rem',
+    alignItems: 'center',
     flex: 1,
-    minWidth: '160px',
+    minWidth: '130px',
+    maxWidth: '190px',
   },
-  cardPosition: {
-    fontSize: '0.7rem',
-    letterSpacing: '0.12em',
-    textTransform: 'uppercase',
+  spreadCardPositionLabel: {
+    fontSize: '0.68rem',
+    letterSpacing: '0.15em',
+    textTransform: 'uppercase' as const,
     color: '#8a8070',
+    marginBottom: '0.75rem',
   },
-  cardName: {
-    fontSize: '0.95rem',
+  spreadCard: {
+    backgroundColor: '#130e22',
+    border: '1px solid rgba(201,184,138,0.3)',
+    borderRadius: '8px',
+    width: '100%',
+    aspectRatio: '0.58',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    padding: '1.25rem 0.75rem',
+    boxSizing: 'border-box' as const,
+    backgroundImage: 'radial-gradient(ellipse at top, #1e1535 0%, #130e22 70%)',
+    boxShadow: '0 4px 24px rgba(0,0,0,0.5)',
+    transition: 'transform 0.5s ease',
+  },
+  spreadCardSymbol: {
+    fontSize: '1.2rem',
+    color: 'rgba(201,184,138,0.35)',
+    userSelect: 'none' as const,
+  },
+  spreadCardCenter: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: '0.4rem',
+  },
+  spreadCardName: {
+    fontSize: '0.9rem',
     color: '#c9b88a',
+    textAlign: 'center' as const,
+    lineHeight: 1.4,
+    fontStyle: 'italic',
   },
-  reversedBadge: {
-    fontSize: '0.75rem',
+  spreadCardArcana: {
+    fontSize: '0.6rem',
+    letterSpacing: '0.15em',
+    textTransform: 'uppercase' as const,
+    color: '#5a5060',
+  },
+  reversedLabel: {
+    fontSize: '0.62rem',
     color: '#8a8070',
+    marginTop: '0.5rem',
+    letterSpacing: '0.1em',
   },
   cardNameSmall: {
     fontSize: '0.85rem',
