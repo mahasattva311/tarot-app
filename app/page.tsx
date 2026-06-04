@@ -45,6 +45,7 @@ interface ReadingState {
   core_tension?: string;
   integration_insight?: string;
   reflection_prompts?: string[];
+  clarifyingQuestion?: string;
 }
 
 // ---------------------------------------------------------------------------
@@ -55,12 +56,13 @@ async function startReading(
   userInput: string,
   sessionId: string,
   onEvent: (type: string, payload: unknown) => void,
-  signal: AbortSignal
+  signal: AbortSignal,
+  isFollowUp = false
 ): Promise<void> {
   const response = await fetch('/api/reading', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ userInput, sessionId }),
+    body: JSON.stringify({ userInput, sessionId, isFollowUp }),
     signal,
   });
 
@@ -205,6 +207,10 @@ export default function TarotPage() {
   const handleEvent = useCallback((type: string, payload: Record<string, unknown>) => {
     switch (type) {
       case 'clarification.needed':
+        setReading((prev) => ({
+          ...prev,
+          clarifyingQuestion: (payload.question as string | undefined) ?? undefined,
+        }));
         setAppState('clarifying');
         break;
 
@@ -257,7 +263,7 @@ export default function TarotPage() {
     }
   }, []);
 
-  const submitReading = useCallback(async (input: string) => {
+  const submitReading = useCallback(async (input: string, isFollowUp = false) => {
     if (!input.trim()) return;
 
     abortRef.current?.abort();
@@ -266,7 +272,7 @@ export default function TarotPage() {
 
     setAppState('submitting');
     setErrorMessage('');
-    setReading({ interpretations: new Map() });
+    if (!isFollowUp) setReading({ interpretations: new Map() });
     setInputValue('');
 
     try {
@@ -274,7 +280,8 @@ export default function TarotPage() {
         input,
         sessionId.current,
         handleEvent as (type: string, payload: unknown) => void,
-        controller.signal
+        controller.signal,
+        isFollowUp
       );
     } catch (err) {
       if ((err as Error).name === 'AbortError') return;
@@ -285,7 +292,8 @@ export default function TarotPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    submitReading(inputValue);
+    const isFollowUp = appState === 'clarifying';
+    submitReading(inputValue, isFollowUp);
   };
 
   const handleReset = () => {
@@ -322,7 +330,7 @@ export default function TarotPage() {
           <form onSubmit={handleSubmit} style={styles.form}>
             {appState === 'clarifying' && (
               <p style={styles.clarificationNote}>
-                The cards need a bit more to work with. Can you say more about what's on your mind?
+                {reading.clarifyingQuestion ?? 'The cards need a bit more to work with. Can you say more about what\'s on your mind?'}
               </p>
             )}
             <textarea

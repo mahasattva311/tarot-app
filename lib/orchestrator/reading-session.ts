@@ -48,6 +48,7 @@ export interface StartReadingOptions {
   cardDefinitions: Map<string, CardDefinition>;
   onEvent: (event: ReadingEvent) => void;
   orchestratorOptions?: OrchestratorOptions;
+  isFollowUp?: boolean;
 }
 
 /**
@@ -70,6 +71,7 @@ export async function runReadingSession(
     cardDefinitions,
     onEvent,
     orchestratorOptions = {},
+    isFollowUp = false,
   } = opts;
 
   const readingId = randomUUID();
@@ -91,8 +93,19 @@ export async function runReadingSession(
     let clarificationTurns = 0;
     let currentInput = userInput;
 
-    while (true) {
+    // Second-turn follow-up: accept input as-is, skip the LLM clarifier.
+    if (isFollowUp) {
+      intention = userInput;
+      themeTags = [];
+    }
+
+    while (!isFollowUp) {
       clarificationTurns++;
+
+      // Capture the model's natural language response via closure so the
+      // catch block can surface the actual question to the user even if the
+      // error type gets re-wrapped during the repair step in runAgent.
+      let clarifyingQuestion: string | undefined;
 
       const clarifierOutput = await runAgent<IntentionClarifierOutput>({
         agent: 'intention-clarifier',
@@ -102,24 +115,35 @@ export async function runReadingSession(
         },
         userMessage: currentInput,
         parseOutput: (raw) => {
-          // The clarifier returns JSON only when ready_to_draw: true.
-          // When still clarifying, it returns natural language — which is
-          // a valid output we surface to the user directly.
-          const json = extractJson<IntentionClarifierOutput>(raw);
+          let json: IntentionClarifierOutput;
+          try {
+            json = extractJson<IntentionClarifierOutput>(raw);
+          } catch {
+            // No JSON at all — the full response is the clarifying question.
+            clarifyingQuestion = raw.trim();
+            throw new Error('Clarifying question — not ready to draw');
+          }
           if (json.ready_to_draw !== true) {
-            throw new Error('Output is not a ready-to-draw handoff');
+            // Got JSON but ready_to_draw is false — model may have put the
+            // question in a `message` or `clarifying_question` field.
+            const meta = json as Record<string, unknown>;
+            const embedded =
+              (meta.message as string | undefined) ??
+              (meta.clarifying_question as string | undefined);
+            clarifyingQuestion = embedded?.trim() ?? raw.trim();
+            throw new Error('Clarifying question — not ready to draw');
           }
           return json;
         },
+        // Natural language is expected here, not a transient error —
+        // repair would send the clarifying question back as "malformed JSON"
+        // which confuses the model into adding English meta-commentary.
+        maxRetries: 0,
+        disableRepair: true,
         tracer,
         ...orchestratorOptions,
-      }).catch(async (_err) => {
-        // Not yet ready — the raw output IS the clarifying response for the user.
-        // We emit it as a clarification event and wait for the next user turn.
-        onEvent({ type: 'clarification.needed', payload: { clarificationTurns } });
-        // In the real app, the API layer would pause here and wait for the
-        // next user message. For the orchestrator, we surface this as a
-        // thrown error that the API route catches and handles.
+      }).catch(async () => {
+        onEvent({ type: 'clarification.needed', payload: { clarificationTurns, question: clarifyingQuestion } });
         throw new ClarificationNeededError(clarificationTurns);
       });
 
@@ -399,3 +423,4 @@ export class ClarificationNeededError extends Error {
     this.name = 'ClarificationNeededError';
   }
 }
+

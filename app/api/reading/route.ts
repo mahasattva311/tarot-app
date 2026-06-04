@@ -57,7 +57,7 @@ function encodeDone(): Uint8Array {
 
 export async function POST(req: NextRequest) {
   // Parse and validate the request body
-  let body: { userInput?: string; sessionId?: string; spreadType?: string };
+  let body: { userInput?: string; sessionId?: string; spreadType?: string; isFollowUp?: boolean };
   try {
     body = await req.json();
   } catch {
@@ -67,7 +67,7 @@ export async function POST(req: NextRequest) {
     });
   }
 
-  const { userInput, sessionId, spreadType } = body;
+  const { userInput, sessionId, spreadType, isFollowUp } = body;
 
   if (!userInput || typeof userInput !== 'string' || userInput.trim() === '') {
     return new Response(JSON.stringify({ error: 'userInput is required' }), {
@@ -111,6 +111,7 @@ export async function POST(req: NextRequest) {
           spreadType: spreadType === 'three_card' ? 'three_card' : 'three_card',
           cardDefinitions: cards,
           onEvent: enqueue,
+          isFollowUp: isFollowUp === true,
         });
       } catch (err) {
         if (err instanceof ClarificationNeededError) {

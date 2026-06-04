@@ -94,6 +94,7 @@ export interface RunAgentOptions<TOutput> {
   maxRetries?: number;
   timeoutMs?: number;
   temperature?: number;
+  disableRepair?: boolean;
 }
 
 export async function runAgent<TOutput>(
@@ -109,6 +110,7 @@ export async function runAgent<TOutput>(
     maxRetries = DEFAULT_MAX_RETRIES,
     timeoutMs = DEFAULT_TIMEOUT_MS,
     temperature = 0.7,
+    disableRepair = false,
   } = opts;
 
   const span = tracer.startSpan(agent);
@@ -169,7 +171,7 @@ export async function runAgent<TOutput>(
       }
 
       // JSON parse failed — one repair attempt before retrying
-      if (attempt === 0 && span.retryCount === 0) {
+      if (!disableRepair && attempt === 0 && span.retryCount === 0) {
         const repaired = await attemptRepair(
           { model, maxTokens: AGENT_MAX_TOKENS[agent], temperature, system: systemPrompt },
           messages,
