@@ -123,25 +123,39 @@ function getArcanaInfo(cardId: string): { symbol: string; label: string } {
   return { symbol: '✦', label: '' };
 }
 
-function SpreadCard({ card }: { card: DrawnCard }) {
+function SpreadCard({ card, index }: { card: DrawnCard; index: number }) {
   const isReversed = card.orientation === 'reversed';
   const { symbol, label } = getArcanaInfo(card.card_id);
 
   return (
     <div style={styles.spreadCardWrapper}>
       <div style={styles.spreadCardPositionLabel}>{card.position_label}</div>
-      <div
-        style={{
-          ...styles.spreadCard,
-          transform: isReversed ? 'rotate(180deg)' : undefined,
-        }}
-      >
-        <div style={styles.spreadCardSymbol}>{symbol}</div>
-        <div style={styles.spreadCardCenter}>
-          <div style={styles.spreadCardName}>{card.card_name}</div>
-          {label && <div style={styles.spreadCardArcana}>{label}</div>}
+      <div style={{ perspective: '900px', width: '100%' }}>
+        <div
+          style={{
+            ...styles.spreadCardScene,
+            animation: `cardFlip 0.75s ease-in-out ${index * 0.35}s forwards`,
+          }}
+        >
+          <div style={styles.spreadCardBack}>
+            <div style={styles.spreadCardBackDecor}>✦</div>
+          </div>
+          <div style={styles.spreadCardFront}>
+            <div
+              style={{
+                ...styles.spreadCardFrontContent,
+                transform: isReversed ? 'rotate(180deg)' : undefined,
+              }}
+            >
+              <div style={styles.spreadCardSymbol}>{symbol}</div>
+              <div style={styles.spreadCardCenter}>
+                <div style={styles.spreadCardName}>{card.card_name}</div>
+                {label && <div style={styles.spreadCardArcana}>{label}</div>}
+              </div>
+              <div style={styles.spreadCardSymbol}>{symbol}</div>
+            </div>
+          </div>
         </div>
-        <div style={styles.spreadCardSymbol}>{symbol}</div>
       </div>
       {isReversed && <div style={styles.reversedLabel}>역방향</div>}
     </div>
@@ -287,6 +301,13 @@ export default function TarotPage() {
   // ---------------------------------------------------------------------------
 
   return (
+    <>
+    <style>{`
+      @keyframes cardFlip {
+        from { transform: rotateY(0deg); }
+        to   { transform: rotateY(180deg); }
+      }
+    `}</style>
     <main style={styles.main}>
       <div style={styles.container}>
         <header style={styles.header}>
@@ -349,8 +370,8 @@ export default function TarotPage() {
               <section style={styles.section}>
                 <h2 style={styles.sectionTitle}>The spread</h2>
                 <div style={styles.spreadRow}>
-                  {reading.spread.map((card) => (
-                    <SpreadCard key={card.card_id} card={card} />
+                  {reading.spread.map((card, i) => (
+                    <SpreadCard key={card.card_id} card={card} index={i} />
                   ))}
                 </div>
               </section>
@@ -414,6 +435,7 @@ export default function TarotPage() {
         )}
       </div>
     </main>
+    </>
   );
 }
 
@@ -533,21 +555,49 @@ const styles: Record<string, React.CSSProperties> = {
     color: '#8a8070',
     marginBottom: '0.75rem',
   },
-  spreadCard: {
-    backgroundColor: '#130e22',
-    border: '1px solid rgba(201,184,138,0.3)',
-    borderRadius: '8px',
+  spreadCardScene: {
+    position: 'relative' as const,
     width: '100%',
     aspectRatio: '0.58',
+    transformStyle: 'preserve-3d' as const,
+  },
+  spreadCardBack: {
+    position: 'absolute' as const,
+    inset: 0,
+    borderRadius: '8px',
+    border: '1px solid rgba(201,184,138,0.2)',
+    backgroundColor: '#0e0a1e',
+    backgroundImage: 'radial-gradient(ellipse at center, #1e1040 0%, #0e0a1e 70%)',
+    backfaceVisibility: 'hidden' as const,
     display: 'flex',
-    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  spreadCardBackDecor: {
+    fontSize: '2.5rem',
+    color: 'rgba(201,184,138,0.12)',
+    userSelect: 'none' as const,
+  },
+  spreadCardFront: {
+    position: 'absolute' as const,
+    inset: 0,
+    borderRadius: '8px',
+    border: '1px solid rgba(201,184,138,0.3)',
+    backgroundColor: '#130e22',
+    backgroundImage: 'radial-gradient(ellipse at top, #1e1535 0%, #130e22 70%)',
+    boxShadow: '0 4px 24px rgba(0,0,0,0.5)',
+    backfaceVisibility: 'hidden' as const,
+    transform: 'rotateY(180deg)',
+  },
+  spreadCardFrontContent: {
+    width: '100%',
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column' as const,
     alignItems: 'center',
     justifyContent: 'space-between',
     padding: '1.25rem 0.75rem',
     boxSizing: 'border-box' as const,
-    backgroundImage: 'radial-gradient(ellipse at top, #1e1535 0%, #130e22 70%)',
-    boxShadow: '0 4px 24px rgba(0,0,0,0.5)',
-    transition: 'transform 0.5s ease',
   },
   spreadCardSymbol: {
     fontSize: '1.2rem',
