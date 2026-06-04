@@ -125,6 +125,24 @@ function getArcanaInfo(cardId: string): { symbol: string; label: string } {
   return { symbol: '✦', label: '' };
 }
 
+const COURT_RANK: Record<string, string> = {
+  page: '11', knight: '12', queen: '13', king: '14',
+};
+const SUIT_PREFIX: Record<string, string> = {
+  wands: 'w', cups: 'c', swords: 's', pentacles: 'p',
+};
+
+function cardImagePath(cardId: string): string {
+  if (cardId.startsWith('major_')) {
+    const num = cardId.split('_')[1].padStart(2, '0');
+    return `/cards/m${num}.jpg`;
+  }
+  const [suit, rank] = cardId.split('_');
+  const prefix = SUIT_PREFIX[suit];
+  const num = COURT_RANK[rank] ?? rank.padStart(2, '0');
+  return `/cards/${prefix}${num}.jpg`;
+}
+
 function SpreadCard({ card, index }: { card: DrawnCard; index: number }) {
   const isReversed = card.orientation === 'reversed';
   const { symbol, label } = getArcanaInfo(card.card_id);
@@ -149,12 +167,16 @@ function SpreadCard({ card, index }: { card: DrawnCard; index: number }) {
                 transform: isReversed ? 'rotate(180deg)' : undefined,
               }}
             >
-              <div style={styles.spreadCardSymbol}>{symbol}</div>
-              <div style={styles.spreadCardCenter}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={cardImagePath(card.card_id)}
+                alt={card.card_name}
+                style={styles.spreadCardImage}
+              />
+              <div style={styles.spreadCardNameOverlay}>
                 <div style={styles.spreadCardName}>{card.card_name}</div>
                 {label && <div style={styles.spreadCardArcana}>{label}</div>}
               </div>
-              <div style={styles.spreadCardSymbol}>{symbol}</div>
             </div>
           </div>
         </div>
@@ -603,9 +625,24 @@ const styles: Record<string, React.CSSProperties> = {
     display: 'flex',
     flexDirection: 'column' as const,
     alignItems: 'center',
-    justifyContent: 'space-between',
-    padding: '1.25rem 0.75rem',
-    boxSizing: 'border-box' as const,
+    justifyContent: 'flex-end',
+    position: 'relative' as const,
+    overflow: 'hidden',
+  },
+  spreadCardImage: {
+    position: 'absolute' as const,
+    inset: 0,
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover' as const,
+  },
+  spreadCardNameOverlay: {
+    position: 'relative' as const,
+    zIndex: 1,
+    width: '100%',
+    textAlign: 'center' as const,
+    padding: '0.4rem 0.5rem 0.5rem',
+    background: 'linear-gradient(transparent, rgba(10,7,22,0.92) 30%)',
   },
   spreadCardSymbol: {
     fontSize: '1.2rem',
