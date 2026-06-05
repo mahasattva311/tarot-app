@@ -64,6 +64,12 @@ Quiet. Inviting. Like a door left open, not a directive.
 
 ---
 
+## Language
+
+{{language_instruction}}
+
+---
+
 ## Output format
 
 ```json

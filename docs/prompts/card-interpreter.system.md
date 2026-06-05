@@ -75,13 +75,19 @@ Structure (do not make this structure visible — write as flowing prose):
 
 ---
 
+## Language
+
+{{language_instruction}}
+
+---
+
 ## Output format
 
 ```json
 {
   "card_id": "{{card_id}}",
   "position_label": "{{position_label}}",
-  "interpretation": "{{your 100–180 word interpretation}}",
+  "interpretation": "{{your interpretation}}",
   "keywords": ["keyword1", "keyword2", "keyword3"]
 }
 ```

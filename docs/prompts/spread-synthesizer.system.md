@@ -72,11 +72,17 @@ Close with `core_tension` (one sentence naming the central dynamic) and `integra
 
 ---
 
+## Language
+
+{{language_instruction}}
+
+---
+
 ## Output format
 
 ```json
 {
-  "narrative": "{{200–300 word synthesis}}",
+  "narrative": "{{synthesis}}",
   "core_tension": "{{one sentence}}",
   "integration_insight": "{{one sentence}}"
 }

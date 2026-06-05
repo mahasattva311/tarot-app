@@ -5,20 +5,15 @@
  *
  * State machine:
  *   idle → submitting → clarifying → reading → complete | error
- *
- * The page connects to POST /api/reading and consumes the SSE stream,
- * progressively rendering each stage of the reading as events arrive.
- *
- * No external UI library required — plain Tailwind-equivalent inline styles
- * keep the component self-contained. Replace with your design system later.
  */
 
 import { useState, useRef, useCallback } from 'react';
 
 // ---------------------------------------------------------------------------
-// Types (subset of lib/orchestrator/types.ts, duplicated here for the client)
+// Types
 // ---------------------------------------------------------------------------
 
+type Language = 'ko' | 'en';
 type AppState = 'idle' | 'submitting' | 'clarifying' | 'reading' | 'complete' | 'error';
 
 interface DrawnCard {
@@ -49,12 +44,72 @@ interface ReadingState {
 }
 
 // ---------------------------------------------------------------------------
+// Translations
+// ---------------------------------------------------------------------------
+
+const T = {
+  ko: {
+    title: '내 마음을 읽는 타로',
+    subtitle: '질문이나 감정을 카드에 가져오세요.',
+    placeholder: '무엇이 마음에 걸리나요? 질문, 상황, 혹은 감정을 적어보세요…',
+    submitIdle: '카드 뽑기',
+    submitLoading: '카드를 읽는 중…',
+    clarifyFallback: '카드가 조금 더 필요해요. 마음에 있는 것을 좀 더 이야기해 주실 수 있나요?',
+    yourIntention: '당신의 의도',
+    cardSpread: '카드 배열',
+    theReading: '리딩',
+    coreTension: '핵심 긴장',
+    integration: '통합',
+    interpretingCards: '카드를 해석하는 중…',
+    toSitWith: '마음에 새겨두기',
+    newReading: '새 리딩 시작',
+    errorFallback: '문제가 발생했습니다. 다시 시도해 주세요.',
+    tryAgain: '다시 시도',
+    reversedSuffix: ' (역방향)',
+    reversedBadge: '역방향',
+    majorArcana: '대아르카나',
+    wands: '완드',
+    cups: '컵',
+    swords: '소드',
+    pentacles: '펜타클',
+  },
+  en: {
+    title: 'Tarot Reading',
+    subtitle: 'Bring a question or a feeling to the cards.',
+    placeholder: "What's on your mind? A question, a situation, a feeling…",
+    submitIdle: 'Draw the cards',
+    submitLoading: 'Reading the cards…',
+    clarifyFallback: "The cards need a bit more to work with. Can you say more about what's on your mind?",
+    yourIntention: 'Your intention',
+    cardSpread: 'The spread',
+    theReading: 'The reading',
+    coreTension: 'Core tension',
+    integration: 'Integration',
+    interpretingCards: 'Interpreting the cards…',
+    toSitWith: 'To sit with',
+    newReading: 'Begin a new reading',
+    errorFallback: 'Something went wrong. Please try again.',
+    tryAgain: 'Try again',
+    reversedSuffix: ' (reversed)',
+    reversedBadge: 'reversed',
+    majorArcana: 'Major Arcana',
+    wands: 'Wands',
+    cups: 'Cups',
+    swords: 'Swords',
+    pentacles: 'Pentacles',
+  },
+} as const;
+
+type Trans = (typeof T)[Language];
+
+// ---------------------------------------------------------------------------
 // SSE consumer
 // ---------------------------------------------------------------------------
 
 async function startReading(
   userInput: string,
   sessionId: string,
+  language: Language,
   onEvent: (type: string, payload: unknown) => void,
   signal: AbortSignal,
   isFollowUp = false
@@ -62,7 +117,7 @@ async function startReading(
   const response = await fetch('/api/reading', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ userInput, sessionId, isFollowUp }),
+    body: JSON.stringify({ userInput, sessionId, isFollowUp, language }),
     signal,
   });
 
@@ -116,12 +171,12 @@ function getSessionId(): string {
 // Subcomponents
 // ---------------------------------------------------------------------------
 
-function getArcanaInfo(cardId: string): { symbol: string; label: string } {
-  if (cardId.startsWith('major')) return { symbol: '✦', label: '대아르카나' };
-  if (cardId.startsWith('wands')) return { symbol: '⌂', label: '완드' };
-  if (cardId.startsWith('cups')) return { symbol: '◎', label: '컵' };
-  if (cardId.startsWith('swords')) return { symbol: '✧', label: '소드' };
-  if (cardId.startsWith('pentacles')) return { symbol: '◈', label: '펜타클' };
+function getArcanaInfo(cardId: string, t: Trans): { symbol: string; label: string } {
+  if (cardId.startsWith('major')) return { symbol: '✦', label: t.majorArcana };
+  if (cardId.startsWith('wands')) return { symbol: '⌂', label: t.wands };
+  if (cardId.startsWith('cups')) return { symbol: '◎', label: t.cups };
+  if (cardId.startsWith('swords')) return { symbol: '✧', label: t.swords };
+  if (cardId.startsWith('pentacles')) return { symbol: '◈', label: t.pentacles };
   return { symbol: '✦', label: '' };
 }
 
@@ -143,9 +198,9 @@ function cardImagePath(cardId: string): string {
   return `/cards/${prefix}${num}.jpg`;
 }
 
-function SpreadCard({ card, index }: { card: DrawnCard; index: number }) {
+function SpreadCard({ card, index, t }: { card: DrawnCard; index: number; t: Trans }) {
   const isReversed = card.orientation === 'reversed';
-  const { symbol, label } = getArcanaInfo(card.card_id);
+  const { symbol: _symbol, label } = getArcanaInfo(card.card_id, t);
 
   return (
     <div style={styles.spreadCardWrapper}>
@@ -181,12 +236,12 @@ function SpreadCard({ card, index }: { card: DrawnCard; index: number }) {
           </div>
         </div>
       </div>
-      {isReversed && <div style={styles.reversedLabel}>역방향</div>}
+      {isReversed && <div style={styles.reversedLabel}>{t.reversedBadge}</div>}
     </div>
   );
 }
 
-function InterpretationBlock({ interp, card }: { interp: CardInterpretation; card?: DrawnCard }) {
+function InterpretationBlock({ interp, card, t }: { interp: CardInterpretation; card?: DrawnCard; t: Trans }) {
   return (
     <div style={styles.interpretationBlock}>
       <div style={styles.interpretationHeader}>
@@ -194,7 +249,7 @@ function InterpretationBlock({ interp, card }: { interp: CardInterpretation; car
         {card && (
           <span style={styles.cardNameSmall}>
             {card.card_name}
-            {card.orientation === 'reversed' && ' (역방향)'}
+            {card.orientation === 'reversed' && t.reversedSuffix}
           </span>
         )}
       </div>
@@ -213,6 +268,9 @@ function InterpretationBlock({ interp, card }: { interp: CardInterpretation; car
 // ---------------------------------------------------------------------------
 
 export default function TarotPage() {
+  const [language, setLanguage] = useState<Language>('ko');
+  const t = T[language];
+
   const [appState, setAppState] = useState<AppState>('idle');
   const [inputValue, setInputValue] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
@@ -221,7 +279,6 @@ export default function TarotPage() {
   const abortRef = useRef<AbortController | null>(null);
   const sessionId = useRef<string>('');
 
-  // Initialise session ID on first render (client-only)
   if (typeof window !== 'undefined' && !sessionId.current) {
     sessionId.current = getSessionId();
   }
@@ -252,11 +309,8 @@ export default function TarotPage() {
         }));
         break;
 
-      case 'interpretation.complete': {
-        // payload only carries card_id/position_label — the full interp
-        // arrives via synthesis. We note the completion for progress display.
+      case 'interpretation.complete':
         break;
-      }
 
       case 'synthesis.complete':
         setReading((prev) => ({
@@ -276,14 +330,14 @@ export default function TarotPage() {
         break;
 
       case 'reading.error':
-        setErrorMessage((payload.message as string) ?? 'An unexpected error occurred.');
+        setErrorMessage((payload.message as string) ?? t.errorFallback);
         setAppState('error');
         break;
 
       default:
         break;
     }
-  }, []);
+  }, [t.errorFallback]);
 
   const submitReading = useCallback(async (input: string, isFollowUp = false) => {
     if (!input.trim()) return;
@@ -301,16 +355,17 @@ export default function TarotPage() {
       await startReading(
         input,
         sessionId.current,
+        language,
         handleEvent as (type: string, payload: unknown) => void,
         controller.signal,
         isFollowUp
       );
     } catch (err) {
       if ((err as Error).name === 'AbortError') return;
-      setErrorMessage(err instanceof Error ? err.message : 'Something went wrong.');
+      setErrorMessage(err instanceof Error ? err.message : t.errorFallback);
       setAppState('error');
     }
-  }, [handleEvent]);
+  }, [handleEvent, language, t.errorFallback]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -341,25 +396,36 @@ export default function TarotPage() {
     <main style={styles.main}>
       <div style={styles.container}>
         <header style={styles.header}>
-          <h1 style={styles.title}>내 마음을 읽는 타로</h1>
-          <p style={styles.subtitle}>
-            질문이나 감정을 카드에 가져오세요.
-          </p>
+          <div style={styles.langToggle}>
+            {(['ko', 'en'] as Language[]).map((lang) => (
+              <button
+                key={lang}
+                onClick={() => setLanguage(lang)}
+                style={{
+                  ...styles.langBtn,
+                  ...(language === lang ? styles.langBtnActive : {}),
+                }}
+              >
+                {lang.toUpperCase()}
+              </button>
+            ))}
+          </div>
+          <h1 style={styles.title}>{t.title}</h1>
+          <p style={styles.subtitle}>{t.subtitle}</p>
         </header>
 
-        {/* Input form — shown in idle / clarifying states */}
         {(appState === 'idle' || appState === 'clarifying' || appState === 'submitting') && (
           <form onSubmit={handleSubmit} style={styles.form}>
             {appState === 'clarifying' && (
               <p style={styles.clarificationNote}>
-                {reading.clarifyingQuestion ?? '카드가 조금 더 필요해요. 마음에 있는 것을 좀 더 이야기해 주실 수 있나요?'}
+                {reading.clarifyingQuestion ?? t.clarifyFallback}
               </p>
             )}
             <textarea
               style={styles.textarea}
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
-              placeholder="무엇이 마음에 걸리나요? 질문, 상황, 혹은 감정을 적어보세요…"
+              placeholder={t.placeholder}
               rows={4}
               disabled={appState === 'submitting'}
               autoFocus
@@ -372,18 +438,16 @@ export default function TarotPage() {
               }}
               disabled={appState === 'submitting' || !inputValue.trim()}
             >
-              {appState === 'submitting' ? '카드를 읽는 중…' : '카드 뽑기'}
+              {appState === 'submitting' ? t.submitLoading : t.submitIdle}
             </button>
           </form>
         )}
 
-        {/* Reading in progress */}
         {(appState === 'reading' || appState === 'complete') && (
           <div style={styles.readingContainer}>
-            {/* Intention */}
             {reading.intention && (
               <section style={styles.section}>
-                <h2 style={styles.sectionTitle}>당신의 의도</h2>
+                <h2 style={styles.sectionTitle}>{t.yourIntention}</h2>
                 <p style={styles.intentionText}>{reading.intention}</p>
                 {reading.theme_tags && reading.theme_tags.length > 0 && (
                   <div style={styles.keywordRow}>
@@ -395,48 +459,45 @@ export default function TarotPage() {
               </section>
             )}
 
-            {/* Cards dealt */}
             {reading.spread && (
               <section style={styles.section}>
-                <h2 style={styles.sectionTitle}>카드 배열</h2>
+                <h2 style={styles.sectionTitle}>{t.cardSpread}</h2>
                 <div style={styles.spreadRow}>
                   {reading.spread.map((card, i) => (
-                    <SpreadCard key={card.card_id} card={card} index={i} />
+                    <SpreadCard key={card.card_id} card={card} index={i} t={t} />
                   ))}
                 </div>
               </section>
             )}
 
-            {/* Synthesis narrative */}
             {reading.narrative ? (
               <section style={styles.section}>
-                <h2 style={styles.sectionTitle}>리딩</h2>
+                <h2 style={styles.sectionTitle}>{t.theReading}</h2>
                 <p style={styles.narrativeText}>{reading.narrative}</p>
 
                 {reading.core_tension && (
                   <div style={styles.insightBox}>
-                    <span style={styles.insightLabel}>핵심 긴장</span>
+                    <span style={styles.insightLabel}>{t.coreTension}</span>
                     <p style={styles.insightText}>{reading.core_tension}</p>
                   </div>
                 )}
 
                 {reading.integration_insight && (
                   <div style={styles.insightBox}>
-                    <span style={styles.insightLabel}>통합</span>
+                    <span style={styles.insightLabel}>{t.integration}</span>
                     <p style={styles.insightText}>{reading.integration_insight}</p>
                   </div>
                 )}
               </section>
             ) : (
               <section style={styles.section}>
-                <p style={styles.loadingText}>카드를 해석하는 중…</p>
+                <p style={styles.loadingText}>{t.interpretingCards}</p>
               </section>
             )}
 
-            {/* Reflection prompts */}
             {reading.reflection_prompts && reading.reflection_prompts.length > 0 && (
               <section style={styles.section}>
-                <h2 style={styles.sectionTitle}>마음에 새겨두기</h2>
+                <h2 style={styles.sectionTitle}>{t.toSitWith}</h2>
                 <ol style={styles.promptList}>
                   {reading.reflection_prompts.map((prompt, i) => (
                     <li key={i} style={styles.promptItem}>{prompt}</li>
@@ -445,22 +506,20 @@ export default function TarotPage() {
               </section>
             )}
 
-            {/* New reading button */}
             {appState === 'complete' && (
               <div style={styles.resetRow}>
                 <button onClick={handleReset} style={styles.resetButton}>
-                  새 리딩 시작
+                  {t.newReading}
                 </button>
               </div>
             )}
           </div>
         )}
 
-        {/* Error state */}
         {appState === 'error' && (
           <div style={styles.errorBox}>
-            <p style={styles.errorText}>{errorMessage || '문제가 발생했습니다. 다시 시도해 주세요.'}</p>
-            <button onClick={handleReset} style={styles.button}>다시 시도</button>
+            <p style={styles.errorText}>{errorMessage || t.errorFallback}</p>
+            <button onClick={handleReset} style={styles.button}>{t.tryAgain}</button>
           </div>
         )}
       </div>
@@ -470,7 +529,7 @@ export default function TarotPage() {
 }
 
 // ---------------------------------------------------------------------------
-// Styles — minimal, no external dependency
+// Styles
 // ---------------------------------------------------------------------------
 
 const styles: Record<string, React.CSSProperties> = {
@@ -488,6 +547,30 @@ const styles: Record<string, React.CSSProperties> = {
   header: {
     textAlign: 'center',
     marginBottom: '2.5rem',
+    position: 'relative',
+  },
+  langToggle: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    display: 'flex',
+    gap: '0.25rem',
+  },
+  langBtn: {
+    backgroundColor: 'transparent',
+    border: '1px solid #3a3550',
+    borderRadius: '4px',
+    color: '#8a8070',
+    fontSize: '0.7rem',
+    letterSpacing: '0.08em',
+    padding: '0.25rem 0.5rem',
+    cursor: 'pointer',
+    fontFamily: 'inherit',
+  },
+  langBtnActive: {
+    backgroundColor: '#3d2e6e',
+    color: '#e8e4d9',
+    borderColor: '#5a4a8e',
   },
   title: {
     fontSize: '2rem',
@@ -643,17 +726,6 @@ const styles: Record<string, React.CSSProperties> = {
     textAlign: 'center' as const,
     padding: '0.4rem 0.5rem 0.5rem',
     background: 'linear-gradient(transparent, rgba(10,7,22,0.92) 30%)',
-  },
-  spreadCardSymbol: {
-    fontSize: '1.2rem',
-    color: 'rgba(201,184,138,0.35)',
-    userSelect: 'none' as const,
-  },
-  spreadCardCenter: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    gap: '0.4rem',
   },
   spreadCardName: {
     fontSize: '0.9rem',

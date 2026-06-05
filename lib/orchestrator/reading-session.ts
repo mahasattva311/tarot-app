@@ -49,6 +49,7 @@ export interface StartReadingOptions {
   onEvent: (event: ReadingEvent) => void;
   orchestratorOptions?: OrchestratorOptions;
   isFollowUp?: boolean;
+  language?: 'ko' | 'en';
 }
 
 /**
@@ -72,7 +73,15 @@ export async function runReadingSession(
     onEvent,
     orchestratorOptions = {},
     isFollowUp = false,
+    language = 'ko',
   } = opts;
+
+  const langInstructionClarifier = language === 'en'
+    ? 'Always write the `intention` and `theme_tags` fields in English.'
+    : 'Always write the `intention` and `theme_tags` fields in Korean, regardless of the language used.';
+  const langInstructionJson = language === 'en'
+    ? 'Always write your entire response in English.'
+    : 'Always write your entire response in Korean.';
 
   const readingId = randomUUID();
 
@@ -112,6 +121,7 @@ export async function runReadingSession(
         input: {
           user_raw_input: currentInput,
           prior_themes: priorThemes,
+          language_instruction: langInstructionClarifier,
         },
         userMessage: currentInput,
         parseOutput: (raw) => {
@@ -126,7 +136,7 @@ export async function runReadingSession(
           if (json.ready_to_draw !== true) {
             // Got JSON but ready_to_draw is false — model may have put the
             // question in a `message` or `clarifying_question` field.
-            const meta = json as Record<string, unknown>;
+            const meta = json as unknown as Record<string, unknown>;
             const embedded =
               (meta.message as string | undefined) ??
               (meta.clarifying_question as string | undefined);
@@ -158,7 +168,7 @@ export async function runReadingSession(
     // Step 2: CardDealer — deterministic, no LLM
     // -----------------------------------------------------------------------
 
-    const spread = dealCards(spreadType, cardDefinitions);
+    const spread = dealCards(spreadType, cardDefinitions, language);
     onEvent({ type: 'cards.dealt', payload: { spread } });
 
     // -----------------------------------------------------------------------
@@ -172,13 +182,14 @@ export async function runReadingSession(
           card_id: card.card_id,
           card_name: card.card_name,
           position_label: card.position_label,
-          position_meaning: POSITION_MEANINGS[card.position_label],
+          position_meaning: POSITION_MEANINGS[language][card.position_label],
           orientation: card.orientation,
           intention,
           theme_tags: themeTags,
           card_definition: formatCardDefinition(
             cardDefinitions.get(card.card_id)!
           ),
+          language_instruction: langInstructionJson,
         },
         userMessage: 'Please interpret this card for the reading context provided.',
         parseOutput: (raw) => extractJson<CardInterpreterOutput>(raw),
@@ -218,6 +229,7 @@ export async function runReadingSession(
         future_orientation: futureCard.orientation,
         future_interpretation: future.interpretation,
         prior_reading_themes: priorThemes,
+        language_instruction: langInstructionJson,
       },
       userMessage:
         'Please synthesize these three card interpretations into a unified narrative.',
@@ -246,6 +258,7 @@ export async function runReadingSession(
         core_tension: synthesis.core_tension,
         integration_insight: synthesis.integration_insight,
         narrative: synthesis.narrative,
+        language_instruction: langInstructionJson,
       },
       userMessage: 'Please write the reflection prompts to close this reading.',
       parseOutput: (raw) => extractJson<ReflectionPrompterOutput>(raw),
@@ -363,18 +376,36 @@ async function persistToDatabase(_reading: CompletedReading): Promise<void> {
 // CardDealer — deterministic, no LLM
 // ---------------------------------------------------------------------------
 
-const POSITION_LABELS = ['과거', '현재', '미래'] as const;
-const POSITION_MEANINGS: Record<string, string> = {
-  '과거': '이 상황을 만들어온 것; 여기까지 이어진 패턴, 에너지, 사건들',
-  '현재': '지금 활성화된 것; 현재의 역학 또는 핵심 긴장',
-  '미래': '떠오르고 있는 것 또는 가능성; 예언이 아닌 초대',
-};
+const POSITION_CONFIG = {
+  ko: {
+    labels: ['과거', '현재', '미래'] as const,
+    meanings: {
+      '과거': '이 상황을 만들어온 것; 여기까지 이어진 패턴, 에너지, 사건들',
+      '현재': '지금 활성화된 것; 현재의 역학 또는 핵심 긴장',
+      '미래': '떠오르고 있는 것 또는 가능성; 예언이 아닌 초대',
+    },
+  },
+  en: {
+    labels: ['Past', 'Present', 'Future'] as const,
+    meanings: {
+      'Past': 'What has shaped this situation; patterns, energies, or events that led here',
+      'Present': 'What is active right now; the current dynamic or core tension',
+      'Future': 'What is emerging or possible; an invitation, not a prediction',
+    },
+  },
+} as const;
+
+const POSITION_MEANINGS = {
+  ko: POSITION_CONFIG.ko.meanings,
+  en: POSITION_CONFIG.en.meanings,
+} as Record<string, Record<string, string>>;
 
 const REVERSED_PROBABILITY = 0.3;
 
 function dealCards(
   _spreadType: SpreadType,
-  cardDefinitions: Map<string, CardDefinition>
+  cardDefinitions: Map<string, CardDefinition>,
+  language: 'ko' | 'en' = 'ko'
 ): DrawnCard[] {
   const allCardIds = Array.from(cardDefinitions.keys());
 
@@ -385,7 +416,8 @@ function dealCards(
     [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
   }
 
-  return POSITION_LABELS.map((label, index) => {
+  const positionLabels = POSITION_CONFIG[language].labels;
+  return positionLabels.map((label, index) => {
     const card_id = shuffled[index];
     const card = cardDefinitions.get(card_id)!;
     const orientation: Orientation =

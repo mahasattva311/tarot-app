@@ -32,7 +32,7 @@ export type Orientation = 'upright' | 'reversed';
 
 export interface DrawnCard {
   position: 1 | 2 | 3;
-  position_label: 'Past' | 'Present' | 'Future';
+  position_label: string;
   card_id: string;
   card_name: string;
   orientation: Orientation;
