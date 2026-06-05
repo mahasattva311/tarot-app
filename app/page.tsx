@@ -117,11 +117,11 @@ function getSessionId(): string {
 // ---------------------------------------------------------------------------
 
 function getArcanaInfo(cardId: string): { symbol: string; label: string } {
-  if (cardId.startsWith('major')) return { symbol: '✦', label: 'Major Arcana' };
-  if (cardId.startsWith('wands')) return { symbol: '⌂', label: 'Wands' };
-  if (cardId.startsWith('cups')) return { symbol: '◎', label: 'Cups' };
-  if (cardId.startsWith('swords')) return { symbol: '✧', label: 'Swords' };
-  if (cardId.startsWith('pentacles')) return { symbol: '◈', label: 'Pentacles' };
+  if (cardId.startsWith('major')) return { symbol: '✦', label: '대아르카나' };
+  if (cardId.startsWith('wands')) return { symbol: '⌂', label: '완드' };
+  if (cardId.startsWith('cups')) return { symbol: '◎', label: '컵' };
+  if (cardId.startsWith('swords')) return { symbol: '✧', label: '소드' };
+  if (cardId.startsWith('pentacles')) return { symbol: '◈', label: '펜타클' };
   return { symbol: '✦', label: '' };
 }
 
@@ -194,7 +194,7 @@ function InterpretationBlock({ interp, card }: { interp: CardInterpretation; car
         {card && (
           <span style={styles.cardNameSmall}>
             {card.card_name}
-            {card.orientation === 'reversed' && ' (reversed)'}
+            {card.orientation === 'reversed' && ' (역방향)'}
           </span>
         )}
       </div>
@@ -341,9 +341,9 @@ export default function TarotPage() {
     <main style={styles.main}>
       <div style={styles.container}>
         <header style={styles.header}>
-          <h1 style={styles.title}>Tarot Reading</h1>
+          <h1 style={styles.title}>내 마음을 읽는 타로</h1>
           <p style={styles.subtitle}>
-            Bring a question or a feeling to the cards.
+            질문이나 감정을 카드에 가져오세요.
           </p>
         </header>
 
@@ -352,14 +352,14 @@ export default function TarotPage() {
           <form onSubmit={handleSubmit} style={styles.form}>
             {appState === 'clarifying' && (
               <p style={styles.clarificationNote}>
-                {reading.clarifyingQuestion ?? 'The cards need a bit more to work with. Can you say more about what\'s on your mind?'}
+                {reading.clarifyingQuestion ?? '카드가 조금 더 필요해요. 마음에 있는 것을 좀 더 이야기해 주실 수 있나요?'}
               </p>
             )}
             <textarea
               style={styles.textarea}
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
-              placeholder="What's on your mind? A question, a situation, a feeling…"
+              placeholder="무엇이 마음에 걸리나요? 질문, 상황, 혹은 감정을 적어보세요…"
               rows={4}
               disabled={appState === 'submitting'}
               autoFocus
@@ -372,7 +372,7 @@ export default function TarotPage() {
               }}
               disabled={appState === 'submitting' || !inputValue.trim()}
             >
-              {appState === 'submitting' ? 'Reading the cards…' : 'Draw the cards'}
+              {appState === 'submitting' ? '카드를 읽는 중…' : '카드 뽑기'}
             </button>
           </form>
         )}
@@ -383,7 +383,7 @@ export default function TarotPage() {
             {/* Intention */}
             {reading.intention && (
               <section style={styles.section}>
-                <h2 style={styles.sectionTitle}>Your intention</h2>
+                <h2 style={styles.sectionTitle}>당신의 의도</h2>
                 <p style={styles.intentionText}>{reading.intention}</p>
                 {reading.theme_tags && reading.theme_tags.length > 0 && (
                   <div style={styles.keywordRow}>
@@ -398,7 +398,7 @@ export default function TarotPage() {
             {/* Cards dealt */}
             {reading.spread && (
               <section style={styles.section}>
-                <h2 style={styles.sectionTitle}>The spread</h2>
+                <h2 style={styles.sectionTitle}>카드 배열</h2>
                 <div style={styles.spreadRow}>
                   {reading.spread.map((card, i) => (
                     <SpreadCard key={card.card_id} card={card} index={i} />
@@ -410,33 +410,33 @@ export default function TarotPage() {
             {/* Synthesis narrative */}
             {reading.narrative ? (
               <section style={styles.section}>
-                <h2 style={styles.sectionTitle}>The reading</h2>
+                <h2 style={styles.sectionTitle}>리딩</h2>
                 <p style={styles.narrativeText}>{reading.narrative}</p>
 
                 {reading.core_tension && (
                   <div style={styles.insightBox}>
-                    <span style={styles.insightLabel}>Core tension</span>
+                    <span style={styles.insightLabel}>핵심 긴장</span>
                     <p style={styles.insightText}>{reading.core_tension}</p>
                   </div>
                 )}
 
                 {reading.integration_insight && (
                   <div style={styles.insightBox}>
-                    <span style={styles.insightLabel}>Integration</span>
+                    <span style={styles.insightLabel}>통합</span>
                     <p style={styles.insightText}>{reading.integration_insight}</p>
                   </div>
                 )}
               </section>
             ) : (
               <section style={styles.section}>
-                <p style={styles.loadingText}>Interpreting the cards…</p>
+                <p style={styles.loadingText}>카드를 해석하는 중…</p>
               </section>
             )}
 
             {/* Reflection prompts */}
             {reading.reflection_prompts && reading.reflection_prompts.length > 0 && (
               <section style={styles.section}>
-                <h2 style={styles.sectionTitle}>To sit with</h2>
+                <h2 style={styles.sectionTitle}>마음에 새겨두기</h2>
                 <ol style={styles.promptList}>
                   {reading.reflection_prompts.map((prompt, i) => (
                     <li key={i} style={styles.promptItem}>{prompt}</li>
@@ -449,7 +449,7 @@ export default function TarotPage() {
             {appState === 'complete' && (
               <div style={styles.resetRow}>
                 <button onClick={handleReset} style={styles.resetButton}>
-                  Begin a new reading
+                  새 리딩 시작
                 </button>
               </div>
             )}
@@ -459,8 +459,8 @@ export default function TarotPage() {
         {/* Error state */}
         {appState === 'error' && (
           <div style={styles.errorBox}>
-            <p style={styles.errorText}>{errorMessage || 'Something went wrong. Please try again.'}</p>
-            <button onClick={handleReset} style={styles.button}>Try again</button>
+            <p style={styles.errorText}>{errorMessage || '문제가 발생했습니다. 다시 시도해 주세요.'}</p>
+            <button onClick={handleReset} style={styles.button}>다시 시도</button>
           </div>
         )}
       </div>

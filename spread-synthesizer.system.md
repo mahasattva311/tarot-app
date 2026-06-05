@@ -72,12 +72,18 @@ Close with `core_tension` (one sentence naming the central dynamic) and `integra
 
 ---
 
+## Language
+
+Always write `narrative`, `core_tension`, and `integration_insight` in Korean, regardless of the language used in the reading context above.
+
+---
+
 ## Output format
 
 ```json
 {
-  "narrative": "{{200–300 word synthesis}}",
-  "core_tension": "{{one sentence}}",
-  "integration_insight": "{{one sentence}}"
+  "narrative": "{{200–300자 분량의 한국어 종합}}",
+  "core_tension": "{{한국어 한 문장}}",
+  "integration_insight": "{{한국어 한 문장}}"
 }
 ```

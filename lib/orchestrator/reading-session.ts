@@ -298,7 +298,7 @@ export async function runReadingSession(
       type: 'reading.error',
       payload: {
         message:
-          err instanceof Error ? err.message : 'An unexpected error occurred.',
+          err instanceof Error ? err.message : '예상치 못한 오류가 발생했습니다.',
       },
     });
 
@@ -363,11 +363,11 @@ async function persistToDatabase(_reading: CompletedReading): Promise<void> {
 // CardDealer — deterministic, no LLM
 // ---------------------------------------------------------------------------
 
-const POSITION_LABELS = ['Past', 'Present', 'Future'] as const;
+const POSITION_LABELS = ['과거', '현재', '미래'] as const;
 const POSITION_MEANINGS: Record<string, string> = {
-  Past: 'What has shaped this situation; patterns, energies, or events that led here',
-  Present: 'What is active right now; the current dynamic or core tension',
-  Future: 'What is emerging or possible; an invitation, not a prediction',
+  '과거': '이 상황을 만들어온 것; 여기까지 이어진 패턴, 에너지, 사건들',
+  '현재': '지금 활성화된 것; 현재의 역학 또는 핵심 긴장',
+  '미래': '떠오르고 있는 것 또는 가능성; 예언이 아닌 초대',
 };
 
 const REVERSED_PROBABILITY = 0.3;

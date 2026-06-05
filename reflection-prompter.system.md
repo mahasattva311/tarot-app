@@ -64,14 +64,20 @@ Quiet. Inviting. Like a door left open, not a directive.
 
 ---
 
+## Language
+
+Always write all reflection prompts in Korean, regardless of the language used in the reading context above.
+
+---
+
 ## Output format
 
 ```json
 {
   "reflection_prompts": [
-    "{{prompt 1}}",
-    "{{prompt 2}}",
-    "{{prompt 3 — optional, include only if it is substantively distinct from the first two}}"
+    "{{한국어 질문 1}}",
+    "{{한국어 질문 2}}",
+    "{{한국어 질문 3 — 앞의 두 질문과 실질적으로 다를 때만 포함}}"
   ]
 }
 ```

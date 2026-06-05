@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Tarot Reading',
+  title: '내 마음을 읽는 타로',
   description: 'A reflective tarot reading experience.',
 };
 

@@ -75,13 +75,19 @@ Structure (do not make this structure visible — write as flowing prose):
 
 ---
 
+## Language
+
+Always write the `interpretation` and `keywords` fields in Korean, regardless of the language used in the reading context above.
+
+---
+
 ## Output format
 
 ```json
 {
   "card_id": "{{card_id}}",
   "position_label": "{{position_label}}",
-  "interpretation": "{{your 100–180 word interpretation}}",
-  "keywords": ["keyword1", "keyword2", "keyword3"]
+  "interpretation": "{{100–180자 분량의 한국어 해석}}",
+  "keywords": ["키워드1", "키워드2", "키워드3"]
 }
 ```
